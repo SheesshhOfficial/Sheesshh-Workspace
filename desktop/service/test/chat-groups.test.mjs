@@ -12,7 +12,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../.
 async function fixture() {
   await mkdir(path.join(root, '.cache'), { recursive: true });
   const repo = await mkdtemp(path.join(root, '.cache', 'chat-groups-'));
-  const sessions = await new Sessions(repo, path.join(repo, '.mrmak')).init();
+  const sessions = await new Sessions(repo, path.join(repo, '.sheesshh')).init();
   // tabOrder follows insertion: a0 b1 c2 d3 e4 f5. e is closed; f is pinned.
   for (const [id, group, pinned, open] of [['a', null, false, true], ['b', 'Dungeon', false, true], ['c', null, false, true], ['d', 'Dungeon', false, true], ['e', 'Dungeon', false, false], ['f', 'Dungeon', true, true]]) {
     sessions.items.set(id, sessions.make({ id, name: id, agent: 'codex', group, pinned, open, status: 'stopped', createdAt: '2026-10-14', updatedAt: `2026-10-14T00:0${sessions.items.size}:00Z`, cols: 80, rows: 25 }));
@@ -111,9 +111,9 @@ test('groups persist across restart and the HTTP routes validate group input', a
   try {
     await sessions.assign('c', 'Dungeon');
     await sessions.close();
-    const saved = JSON.parse(await readFile(path.join(repo, '.mrmak/sessions.json'), 'utf8'));
+    const saved = JSON.parse(await readFile(path.join(repo, '.sheesshh/sessions.json'), 'utf8'));
     assert.deepEqual(saved.map(item => [item.id, item.group]), [['f', 'Dungeon'], ['a', null], ['b', 'Dungeon'], ['d', 'Dungeon'], ['c', 'Dungeon'], ['e', 'Dungeon']], 'an ungrouped tab ahead of the group keeps its place; the closed member stays with its group');
-    reopened = await new Sessions(repo, path.join(repo, '.mrmak')).init();
+    reopened = await new Sessions(repo, path.join(repo, '.sheesshh')).init();
     assert.deepEqual(ids(reopened), ['f', 'a', 'b', 'd', 'c']);
     assert.equal(reopened.get('e').group, 'Dungeon', 'closed chats keep their group for History');
   } finally { await reopened?.close(); }

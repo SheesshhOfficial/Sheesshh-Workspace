@@ -1,5 +1,5 @@
 import { createReadStream } from 'node:fs';
-import { readdir, readFile, stat, realpath, mkdir, writeFile, rename, unlink } from 'node:fs/promises';
+import { readdir, readFile, stat, realpath, mkdir, writeFile, rename, unlink, chmod } from 'node:fs/promises';
 import { createHash, randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { expandHome, realFile, secret, within } from './util.mjs';
@@ -91,16 +91,20 @@ export class Files {
     const operation = this.writes.catch(() => {}).then(async () => {
       const actual = await realpath(path.resolve(requested));
       if (path.extname(actual).toLowerCase() !== '.md') throw new Error('Only Markdown files can be edited.');
+      const mode = (await stat(actual)).mode & 0o777;
       const original = await readFile(actual);
       if (createHash('sha256').update(original).digest('hex') !== revision) throw Object.assign(new Error('This file changed on disk. Your draft is kept. Reopen the file to compare before saving.'), { status: 409 });
-      const backupFolder = path.join(this.repo, '.mrmak', 'markdown-backups');
-      await mkdir(backupFolder, { recursive: true });
+      const backupFolder = path.join(this.repo, '.sheesshh', 'markdown-backups');
+      await mkdir(backupFolder, { recursive: true, mode: 0o700 });
       const id = `${Date.now()}-${randomUUID()}`;
-      await writeFile(path.join(backupFolder, `${id}.md`), original, { flag: 'wx' });
-      await writeFile(path.join(backupFolder, `${id}.json`), JSON.stringify({ path: actual, revision, savedAt: new Date().toISOString() }), { flag: 'wx' });
+      await writeFile(path.join(backupFolder, `${id}.md`), original, { flag: 'wx', mode: 0o600 });
+      await writeFile(path.join(backupFolder, `${id}.json`), JSON.stringify({ path: actual, revision, savedAt: new Date().toISOString() }), { flag: 'wx', mode: 0o600 });
       const temp = path.join(path.dirname(actual), `.${path.basename(actual)}.${id}.tmp`);
       try {
-        await writeFile(temp, text, { flag: 'wx' });
+        await writeFile(temp, text, { flag: 'wx', mode });
+        // Atomic replacement must not turn a private document into a file that
+        // other local users can read. Restore bits filtered by the process umask.
+        await chmod(temp, mode);
         if (createHash('sha256').update(await readFile(actual)).digest('hex') !== revision) throw Object.assign(new Error('This file changed while saving. Your draft is kept; reopen the file to compare.'), { status: 409 });
         await rename(temp, actual);
       } finally { await unlink(temp).catch(() => {}); }
@@ -114,7 +118,11 @@ export class Files {
     if (!match || !this.grants.has(match[1])) throw Object.assign(new Error('Preview not found'), { status: 404 });
     const relative = decodeURIComponent(match[2]);
     if (relative.split(/[\\/]/).some(secretPart)) throw Object.assign(new Error('Private application files cannot be loaded by reports'), { status: 403 });
-    const { file, info } = await realFile(this.grants.get(match[1]), relative);
+    const root = await realpath(this.grants.get(match[1]));
+    const { file, info } = await realFile(root, relative);
+    // A public-looking symlink can point at .env or a private state folder.
+    // Check the resolved path as well as the spelling supplied in the URL.
+    if (path.relative(root, file).split(/[\\/]/).some(secretPart)) throw Object.assign(new Error('Private application files cannot be loaded by reports'), { status: 403 });
     if (!info.isFile()) throw Object.assign(new Error('File not found'), { status: 404 });
     const serve = /\.html?$/i.test(file) ? serveReport : serveFile;
     await serve(request, response, file, info, { 'Referrer-Policy': 'no-referrer', 'Access-Control-Allow-Origin': this.uiOrigin, 'Cross-Origin-Resource-Policy': 'cross-origin' });

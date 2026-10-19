@@ -3,7 +3,7 @@ import path from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { englishTitle } from './titles.mjs';
 
-const MARKER = 'Mr. Mak handoff request';
+const MARKER = 'Sheesshh handoff request';
 export const HANDOFF_REQUEST = `${MARKER}: this conversation is getting long. Write a handoff for a fresh chat that will continue this work in the same project. Do not change files or run commands. Reply with Markdown only, starting with the heading "# Handoff", covering the goal, current state, decisions and their reasons, files touched, open problems and the exact next steps. Include the paths, commands and IDs a new chat needs; leave out what it can read in the repository.`;
 const WAIT = 15 * 60 * 1000;
 

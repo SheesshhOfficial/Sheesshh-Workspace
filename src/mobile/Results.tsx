@@ -77,16 +77,16 @@ export default function Results({ header, active }: { header: HTMLElement | null
     const id = selectedId, base = new URL(preview.url, location.origin), prefix = /^\/mobile\/view\/[^/]+\//.exec(base.pathname)?.[0]
     const message = (event: MessageEvent) => {
       if (event.source !== frame.current?.contentWindow || event.origin !== 'null' || !prefix) return
-      if (event.data?.type === 'mrmak:report-back') { if (active) mobileBack(); return }
-      if (event.data?.type === 'mrmak:report-pull') { const { distance, done } = event.data.state || {}; if (typeof distance === 'number' && Number.isFinite(distance) && typeof done === 'boolean') framePull(Math.max(0, distance), done); return }
-      if (event.data?.type === 'mrmak:report-ready') { frame.current?.contentWindow?.postMessage({ type: 'mrmak:report-restore', state: reportPosition(id, step) }, '*'); return }
-      if (event.data?.type !== 'mrmak:report-state') return
+      if (event.data?.type === 'sheesshh:report-back') { if (active) mobileBack(); return }
+      if (event.data?.type === 'sheesshh:report-pull') { const { distance, done } = event.data.state || {}; if (typeof distance === 'number' && Number.isFinite(distance) && typeof done === 'boolean') framePull(Math.max(0, distance), done); return }
+      if (event.data?.type === 'sheesshh:report-ready') { frame.current?.contentWindow?.postMessage({ type: 'sheesshh:report-restore', state: reportPosition(id, step) }, '*'); return }
+      if (event.data?.type !== 'sheesshh:report-state') return
       const state = validReportPosition(event.data.state)
       if (state && state.path && state.path.startsWith(prefix.slice(1))) saveReportPosition(id, step, { ...state, path: state.path.slice(prefix.length - 1) })
     }
     window.addEventListener('message', message)
-    frame.current?.contentWindow?.postMessage({ type: 'mrmak:report-active', active }, '*')
-    frame.current?.contentWindow?.postMessage({ type: 'mrmak:report-capture' }, '*')
+    frame.current?.contentWindow?.postMessage({ type: 'sheesshh:report-active', active }, '*')
+    frame.current?.contentWindow?.postMessage({ type: 'sheesshh:report-capture' }, '*')
     return () => window.removeEventListener('message', message)
   }, [preview, selectedId, step, active])
   function close() { if (menu.current) menu.current.open = false; selectMobileWorkspace(null); setOpened(null); setError('') }

@@ -6,7 +6,7 @@ import path from 'node:path';
 import { ProjectAdapterRegistry } from '../project-adapters/registry.mjs';
 
 test('generic detection is always available and Godot wins when project.godot is present', async () => {
-  const root = await mkdtemp(path.join(os.tmpdir(), 'mrmak-project-'));
+  const root = await mkdtemp(path.join(os.tmpdir(), 'sheesshh-project-'));
   await mkdir(path.join(root, 'scenes'));
   await writeFile(path.join(root, 'project.godot'), '[application]\nconfig/name="Sky Islands"\nrun/main_scene="res://scenes/main.tscn"\n[application]\nconfig/features=PackedStringArray("4.3")\n');
   await writeFile(path.join(root, 'scenes', 'main.tscn'), '[gd_scene format=3]\n');
@@ -22,11 +22,11 @@ test('generic detection is always available and Godot wins when project.godot is
 });
 
 test('Godot commands use the app bundle on a Mac without a godot command on PATH', { skip: process.platform !== 'darwin' && 'macOS app bundles only' }, async () => {
-  const home = await mkdtemp(path.join(os.tmpdir(), 'mrmak-godot-home-'));
+  const home = await mkdtemp(path.join(os.tmpdir(), 'sheesshh-godot-home-'));
   const binary = path.join(home, 'Applications', 'Godot.app', 'Contents', 'MacOS', 'Godot');
   await mkdir(path.dirname(binary), { recursive: true });
   await writeFile(binary, '', { mode: 0o755 });
-  const root = await mkdtemp(path.join(os.tmpdir(), 'mrmak-godot-app-'));
+  const root = await mkdtemp(path.join(os.tmpdir(), 'sheesshh-godot-app-'));
   await writeFile(path.join(root, 'project.godot'), '[application]\nconfig/name="Bundle"\n');
   const previous = { HOME: process.env.HOME, PATH: process.env.PATH };
   process.env.HOME = home; process.env.PATH = '';
@@ -41,7 +41,7 @@ test('Godot commands use the app bundle on a Mac without a godot command on PATH
 });
 
 test('generic fallback describes an ordinary folder without launching anything', async () => {
-  const root = await mkdtemp(path.join(os.tmpdir(), 'mrmak-generic-'));
+  const root = await mkdtemp(path.join(os.tmpdir(), 'sheesshh-generic-'));
   const registry = new ProjectAdapterRegistry();
   const [match] = await registry.detect(root);
   assert.equal(match.adapterId, 'generic');

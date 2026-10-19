@@ -33,7 +33,7 @@ test('recent projects merge Claude Code folders with chat folders and skip trans
   const sessions = [{ cwd: tool, updatedAt: '2020-01-01T00:00:00.000Z' }, { cwd: process.platform === 'win32' ? game.toUpperCase() : game, updatedAt: '2019-01-01T00:00:00.000Z' }];
   const projects = await recentProjects({ repo, sessions });
   assert.deepEqual(projects.map(item => item.name), ['workspace', 'Game', 'Script', 'Tool']);
-  assert.deepEqual(projects.find(item => item.name === 'Game').sources.sort(), ['claude', 'mrmak']);
+  assert.deepEqual(projects.find(item => item.name === 'Game').sources.sort(), ['claude', 'sheesshh']);
   assert.deepEqual(projects.find(item => item.name === 'Script').sources, ['codex']);
   const pinned = await recentProjects({ repo, sessions, pinned: [tool] });
   assert.deepEqual(pinned.map(item => [item.name, item.pinned]), [['workspace', false], ['Tool', true], ['Game', false], ['Script', false]]);
@@ -159,8 +159,8 @@ test('answering a prompt re-checks it and moves the selection one key at a time'
 
 test('Claude paste wrappers are removed from the user messages shown in Conversation', async () => {
   const { transcriptMessages, unwrapPastes } = await import('../mobile-transcript.mjs');
-  const wrapped = '\n\n<pasted_content id="ab8e">\nPlease fix the tabs.\n\n<mrmak_workspace_context>{}</mrmak_workspace_context>\n</pasted_content id="ab8e">';
-  assert.deepEqual(transcriptMessages([{ type: 'user', message: { content: wrapped } }], 'claude').map(item => item.text), ['Please fix the tabs.\n\n<mrmak_workspace_context>{}</mrmak_workspace_context>']);
+  const wrapped = '\n\n<pasted_content id="ab8e">\nPlease fix the tabs.\n\n<sheesshh_workspace_context>{}</sheesshh_workspace_context>\n</pasted_content id="ab8e">';
+  assert.deepEqual(transcriptMessages([{ type: 'user', message: { content: wrapped } }], 'claude').map(item => item.text), ['Please fix the tabs.\n\n<sheesshh_workspace_context>{}</sheesshh_workspace_context>']);
   assert.equal(unwrapPastes('Typed first <pasted_content id="x1">\npasted\n</pasted_content id="x1"> and after'), 'Typed first pasted and after');
   assert.equal(unwrapPastes('<pasted_content id="a">mismatched</pasted_content id="b">'), '<pasted_content id="a">mismatched</pasted_content id="b">');
 });

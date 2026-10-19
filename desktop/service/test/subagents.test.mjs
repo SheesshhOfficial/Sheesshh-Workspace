@@ -53,7 +53,7 @@ test('background commands run until notified, wherever the notification arrives'
 });
 
 test('the conversation lists subagents and background commands still working', async () => {
-  const config = await mkdtemp(path.join(os.tmpdir(), 'mrmak-claude-')), cwd = path.resolve('agents-project'), nativeId = 'session-1';
+  const config = await mkdtemp(path.join(os.tmpdir(), 'sheesshh-claude-')), cwd = path.resolve('agents-project'), nativeId = 'session-1';
   const project = path.join(config, 'projects', cwd.replace(/[^a-zA-Z0-9]/g, '-')), folder = path.join(project, nativeId, 'subagents');
   await mkdir(folder, { recursive: true });
   const lines = records => records.map(record => JSON.stringify(record)).join('\n') + '\n';

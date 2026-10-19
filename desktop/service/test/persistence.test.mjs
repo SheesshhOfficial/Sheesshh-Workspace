@@ -10,10 +10,10 @@ import { Sessions } from '../sessions.mjs';
 
 const write = (terminal, data) => new Promise(resolve => terminal.write(data, resolve));
 async function directory(t) {
-  const root = await mkdtemp(path.join(os.tmpdir(), 'mrmak-persistence-'));
+  const root = await mkdtemp(path.join(os.tmpdir(), 'sheesshh-persistence-'));
   t.after(async () => {
     assert.equal(path.dirname(root), path.resolve(os.tmpdir()));
-    assert.ok(path.basename(root).startsWith('mrmak-persistence-'));
+    assert.ok(path.basename(root).startsWith('sheesshh-persistence-'));
     await rm(root, { recursive: true, force: true });
   });
   return root;
@@ -24,7 +24,7 @@ async function directory(t) {
 async function lockFile(file) {
   const script = `
     $ErrorActionPreference = 'Stop'
-    $stream = [IO.File]::Open($env:MRMAK_TEST_LOCK_FILE, [IO.FileMode]::Open, [IO.FileAccess]::Read, [IO.FileShare]::Read)
+    $stream = [IO.File]::Open($env:SHEESSHH_TEST_LOCK_FILE, [IO.FileMode]::Open, [IO.FileAccess]::Read, [IO.FileShare]::Read)
     try {
       [Console]::Out.WriteLine('locked')
       [Console]::Out.Flush()
@@ -32,7 +32,7 @@ async function lockFile(file) {
     } finally { $stream.Dispose() }
   `;
   const child = spawn('powershell.exe', ['-NoProfile', '-NonInteractive', '-EncodedCommand', Buffer.from(script, 'utf16le').toString('base64')], {
-    windowsHide: true, env: { ...process.env, MRMAK_TEST_LOCK_FILE: file }, stdio: ['pipe', 'pipe', 'pipe'],
+    windowsHide: true, env: { ...process.env, SHEESSHH_TEST_LOCK_FILE: file }, stdio: ['pipe', 'pipe', 'pipe'],
   });
   const exited = once(child, 'exit');
   let stderr = '', stdout = '';

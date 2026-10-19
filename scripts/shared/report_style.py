@@ -1,7 +1,7 @@
 """
-Shared HTML report style for all Mr. Mak reports.
+Shared HTML report style for all Sheesshh reports.
 
-"Luminous Mak" design system — tokens mirrored from src/styles/tokens.css:
+"Luminous Sheesshh" design system — tokens mirrored from src/styles/tokens.css:
 near-black bg (#0a0a0c) with a soft pink/purple aura, glass cards with
 hairline borders, pink accent (#f0a0b0), Fraunces display serif for
 headings, Inter body, JetBrains Mono for code.

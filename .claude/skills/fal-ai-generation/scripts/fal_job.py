@@ -40,7 +40,7 @@ def client(env_file=None):
         values = dotenv_values(env_file)
     else:
         values = {}
-    names = ("FAL_KEY", "FALAI_KEY", "MRMAK_MCP_FAL_AUTHORIZATION")
+    names = ("FAL_KEY", "FALAI_KEY", "SHEESSHH_MCP_FAL_AUTHORIZATION")
     key = next((os.environ.get(name) for name in names if os.environ.get(name)), None)
     key = key or next((values.get(name) for name in names if values.get(name)), None)
     if not key:

@@ -4,13 +4,13 @@ export type MobileView = 'list' | 'chat' | 'results'
 interface Navigation { view: MobileView; history: boolean }
 export interface ChatPosition { mode?: 'messages' | 'terminal'; top?: number; follow?: boolean; terminalLine?: number; terminalFollow?: boolean; terminalView?: TerminalView }
 export type TerminalView = 'wrap' | 'fit' | 'actual'
-const navigationKey = 'mrmak.mobile.navigation'
+const navigationKey = 'sheesshh.mobile.navigation'
 function read(key: string): unknown { try { return JSON.parse(localStorage.getItem(key) || 'null') } catch { return null } }
 function save(key: string, value: unknown) { try { localStorage.setItem(key, JSON.stringify(value)) } catch { /* Keep in-memory navigation when storage is unavailable. */ } }
 function initialNavigation(): Navigation {
   const value = read(navigationKey) as Partial<Navigation> | null
   if (value && ['list', 'chat', 'results'].includes(value.view || '') && typeof value.history === 'boolean') return { view: value.view!, history: value.history }
-  return { view: localStorage.getItem('mrmak.mobile.selected') ? 'chat' : 'list', history: false }
+  return { view: localStorage.getItem('sheesshh.mobile.selected') ? 'chat' : 'list', history: false }
 }
 let navigation = initialNavigation()
 const listeners = new Set<() => void>()
@@ -48,15 +48,15 @@ export function installMobileBack() {
   return () => { backInstalled = false; watcher?.destroy(); watcher = null }
 }
 export function mobileChatPosition(id: string): ChatPosition {
-  const value = read(`mrmak.mobile.position.${id}`) as ChatPosition | null
+  const value = read(`sheesshh.mobile.position.${id}`) as ChatPosition | null
   if (!value || typeof value !== 'object') return {}
   return { mode: value.mode === 'terminal' || value.mode === 'messages' ? value.mode : undefined, top: Number.isFinite(value.top) && value.top! >= 0 ? value.top : undefined, follow: typeof value.follow === 'boolean' ? value.follow : undefined, terminalLine: Number.isInteger(value.terminalLine) && value.terminalLine! >= 0 ? value.terminalLine : undefined, terminalFollow: typeof value.terminalFollow === 'boolean' ? value.terminalFollow : undefined, terminalView: value.terminalView === 'wrap' || value.terminalView === 'fit' || value.terminalView === 'actual' ? value.terminalView : undefined }
 }
-export function saveMobileChatPosition(id: string, value: ChatPosition) { save(`mrmak.mobile.position.${id}`, { ...mobileChatPosition(id), ...value }) }
+export function saveMobileChatPosition(id: string, value: ChatPosition) { save(`sheesshh.mobile.position.${id}`, { ...mobileChatPosition(id), ...value }) }
 
 export interface WorkspaceSelection { id: string | null; step: number }
 export interface ReportPosition { path?: string; hash?: string; top: number; left: number; scrollers?: { selector: string; top: number; left: number }[] }
-const workspaceKey = 'mrmak.mobile.workspace'
+const workspaceKey = 'sheesshh.mobile.workspace'
 function initialWorkspace(): WorkspaceSelection {
   const value = read(workspaceKey) as Partial<WorkspaceSelection> | null
   return { id: typeof value?.id === 'string' ? value.id : null, step: Number.isInteger(value?.step) && value!.step! >= 0 ? value!.step! : 0 }
@@ -65,9 +65,9 @@ let workspaceSelection = initialWorkspace()
 const workspaceListeners = new Set<() => void>()
 export function mobileWorkspaceSelection() { return workspaceSelection }
 export function useMobileWorkspace() { return useSyncExternalStore(listener => { workspaceListeners.add(listener); return () => { workspaceListeners.delete(listener) } }, () => workspaceSelection) }
-export function selectMobileWorkspace(id: string | null, step?: number) { const lastStep = id ? read(`mrmak.mobile.report-step.${id}`) : null; step = step ?? (typeof lastStep === 'number' && Number.isInteger(lastStep) && lastStep >= 0 ? lastStep : 0); if (id) save(`mrmak.mobile.report-step.${id}`, step); workspaceSelection = { id, step }; save(workspaceKey, workspaceSelection); workspaceListeners.forEach(listener => listener()); syncBack() }
+export function selectMobileWorkspace(id: string | null, step?: number) { const lastStep = id ? read(`sheesshh.mobile.report-step.${id}`) : null; step = step ?? (typeof lastStep === 'number' && Number.isInteger(lastStep) && lastStep >= 0 ? lastStep : 0); if (id) save(`sheesshh.mobile.report-step.${id}`, step); workspaceSelection = { id, step }; save(workspaceKey, workspaceSelection); workspaceListeners.forEach(listener => listener()); syncBack() }
 export function reportPosition(id: string, step: number): ReportPosition {
-  const value = read(`mrmak.mobile.report.${id}.${step}`) as Partial<ReportPosition> | null
+  const value = read(`sheesshh.mobile.report.${id}.${step}`) as Partial<ReportPosition> | null
   return validReportPosition(value) || { top: 0, left: 0 }
 }
 export function validReportPosition(value: unknown): ReportPosition | null {
@@ -79,4 +79,4 @@ export function validReportPosition(value: unknown): ReportPosition | null {
   const scrollers = Array.isArray(state.scrollers) ? state.scrollers.slice(0, 12).filter(item => item && typeof item.selector === 'string' && item.selector.length <= 500 && [item.top,item.left].every(n => typeof n === 'number' && Number.isFinite(n) && n >= 0 && n <= 1e7)) : undefined
   return { path: state.path, hash: state.hash, top: state.top, left: state.left, ...(scrollers ? { scrollers } : {}) }
 }
-export function saveReportPosition(id: string, step: number, value: ReportPosition) { const valid = validReportPosition(value); if (valid) save(`mrmak.mobile.report.${id}.${step}`, valid) }
+export function saveReportPosition(id: string, step: number, value: ReportPosition) { const valid = validReportPosition(value); if (valid) save(`sheesshh.mobile.report.${id}.${step}`, valid) }

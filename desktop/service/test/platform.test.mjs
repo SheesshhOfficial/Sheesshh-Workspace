@@ -34,7 +34,7 @@ test('typed home folders expand without changing other tildes', () => {
 });
 
 test('OpenCode install directory is included in command lookup roots', async () => {
-  const home = await mkdtemp(path.join(os.tmpdir(), 'mrmak-command-home-'));
+  const home = await mkdtemp(path.join(os.tmpdir(), 'sheesshh-command-home-'));
   const bin = path.join(home, '.opencode', 'bin');
   await mkdir(bin, { recursive: true });
   const executable = path.join(bin, 'opencode');
@@ -45,7 +45,7 @@ test('OpenCode install directory is included in command lookup roots', async () 
 });
 
 test('command lookup never resolves empty PATH entries, folders or non-executables against the current folder', { skip: process.platform === 'win32' && 'uses the POSIX execute bit' }, async () => {
-  const home = await mkdtemp(path.join(os.tmpdir(), 'mrmak-command-cwd-'));
+  const home = await mkdtemp(path.join(os.tmpdir(), 'sheesshh-command-cwd-'));
   const bin = path.join(home, '.opencode', 'bin');
   await mkdir(bin, { recursive: true });
   await writeFile(path.join(bin, 'opencode'), '', { mode: 0o755 });

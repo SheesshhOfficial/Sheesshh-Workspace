@@ -1,7 +1,7 @@
 // The opaque mobile report can report its own route/scroll only. It cannot call app APIs.
 export function mobileReportStatePrelude(parentOrigin) {
   const origin = JSON.stringify(parentOrigin).replace(/</g, '\\u003c');
-  return Buffer.from(`<script data-mrmak-mobile-state>
+  return Buffer.from(`<script data-sheesshh-mobile-state>
 (() => {
   const target = ${origin}, tracked = new Set(); let restoring = true, restored = false, timer = 0, restoreVersion = 0;
   const send = (type, state) => parent.postMessage({ type, ...(state ? { state } : {}) }, target);
@@ -17,16 +17,16 @@ export function mobileReportStatePrelude(parentOrigin) {
   const capture = () => {
     if (restoring) return;
     const scrollers = [...tracked].filter(node => node.isConnected && (node.scrollTop || node.scrollLeft)).slice(0,12).map(node => ({ selector: selector(node), top: Math.max(0,node.scrollTop), left: Math.max(0,node.scrollLeft) })).filter(item => item.selector);
-    send('mrmak:report-state', { path: location.pathname.slice(1), hash: location.hash, top: Math.max(0,window.scrollY), left: Math.max(0,window.scrollX), scrollers });
+    send('sheesshh:report-state', { path: location.pathname.slice(1), hash: location.hash, top: Math.max(0,window.scrollY), left: Math.max(0,window.scrollX), scrollers });
   };
   const changed = () => { clearTimeout(timer); timer = setTimeout(capture, 80); };
   document.addEventListener('scroll', event => { const node = event.target; if (node instanceof Element && node !== document.scrollingElement) { tracked.add(node); if (tracked.size > 12) tracked.delete(tracked.values().next().value); } changed(); }, true); window.addEventListener('hashchange', changed);
   window.addEventListener('pagehide', capture);
   window.addEventListener('message', event => {
     if (event.source !== parent || event.origin !== target) return;
-    if (event.data?.type === 'mrmak:report-active') { if (event.data.active === false) document.querySelectorAll('video,audio').forEach(media => media.pause()); return; }
-    if (event.data?.type === 'mrmak:report-capture') { capture(); return; }
-    if (event.data?.type !== 'mrmak:report-restore') return;
+    if (event.data?.type === 'sheesshh:report-active') { if (event.data.active === false) document.querySelectorAll('video,audio').forEach(media => media.pause()); return; }
+    if (event.data?.type === 'sheesshh:report-capture') { capture(); return; }
+    if (event.data?.type !== 'sheesshh:report-restore') return;
     const state = event.data.state;
     if (!state || ![state.top,state.left].every(n => typeof n === 'number' && Number.isFinite(n) && n >= 0 && n <= 1e7)) return;
     // One restore per document: a late duplicate must not undo a newer position.
@@ -53,7 +53,7 @@ export function mobileReportStatePrelude(parentOrigin) {
   document.documentElement.style.overscrollBehaviorY = 'contain';
   let pull = null;
   const atTop = node => { for (; node instanceof Element; node = node.parentElement) if (node.scrollTop > 0) return false; return window.scrollY <= 0; };
-  const pulled = (distance, done) => { if (pull && (pull.distance || done)) send('mrmak:report-pull', { distance, done }); };
+  const pulled = (distance, done) => { if (pull && (pull.distance || done)) send('sheesshh:report-pull', { distance, done }); };
   document.addEventListener('touchstart', event => { const touch = event.touches[0]; pull = event.touches.length === 1 && atTop(event.target) ? { x: touch.clientX, y: touch.clientY, distance: 0 } : null; }, { passive: true, capture: true });
   document.addEventListener('touchmove', event => {
     if (!pull) return;
@@ -64,9 +64,9 @@ export function mobileReportStatePrelude(parentOrigin) {
   const released = () => { if (pull) pulled(pull.distance, true); pull = null; };
   document.addEventListener('touchend', released, { passive: true, capture: true }); document.addEventListener('touchcancel', () => { pulled(0, true); pull = null; }, { passive: true, capture: true });
   // A back request (the phone's back gesture, Esc) can reach this frame when it has focus: the app steps back.
-  const watchBack = () => { if (!window.CloseWatcher) return; const watcher = new CloseWatcher(); watcher.onclose = () => { send('mrmak:report-back'); watchBack(); }; };
+  const watchBack = () => { if (!window.CloseWatcher) return; const watcher = new CloseWatcher(); watcher.onclose = () => { send('sheesshh:report-back'); watchBack(); }; };
   watchBack();
-  window.addEventListener('load', () => send('mrmak:report-ready'));
+  window.addEventListener('load', () => send('sheesshh:report-ready'));
 })();
 </script>`);
 }

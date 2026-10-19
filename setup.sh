@@ -5,14 +5,14 @@ mode="${1:-check}"
 cd "$(dirname "$0")"
 [ -f workspace/workspace.json ] || { echo "Run setup.sh from the complete repository folder." >&2; exit 1; }
 has() { command -v "$1" >/dev/null 2>&1 && echo true || echo false; }
-echo "Mr. Mak Workspace setup"
+echo "Sheesshh Workspace setup"
 echo "Node: $(has node) | npm: $(has npm) | Rust (desktop source build only): $(has cargo)"
 echo "Codex CLI: $(has codex) | Claude Code CLI: $(has claude) | OpenCode: $(has opencode)"
 # xcrun fails both without the Command Line Tools and with a stale developer path after a macOS upgrade.
 has_clt() { xcrun --sdk macosx --show-sdk-path >/dev/null 2>&1 && echo true || echo false; }
 [ "$(uname)" = Darwin ] && echo "Xcode Command Line Tools (desktop source build only): $(has_clt)"
-if ! command -v codex >/dev/null && ! command -v claude >/dev/null && ! command -v opencode >/dev/null; then
-  echo "Install and configure Codex CLI, Claude Code CLI or OpenCode first. See docs/getting-started.md." >&2; exit 1
+if ! command -v codex >/dev/null && ! command -v claude >/dev/null && ! command -v opencode >/dev/null && ! command -v agy >/dev/null && ! command -v kimi >/dev/null; then
+  echo "No agent CLI found. Preview still works; install Codex, Claude Code, OpenCode, Antigravity or Kimi before opening agent chats." >&2
 fi
 case "$mode" in
   check)
@@ -40,12 +40,12 @@ if [ "$(uname)" = Darwin ]; then
   minimum="$(node desktop/prepare.mjs --macos-minimum)"
   if [ -n "$minimum" ]; then
     echo "The bundled Node $(node --version) requires macOS $minimum, so the app will declare macOS $minimum as its minimum (build with Node 22 for older Macs)."
-    MRMAK_MACOS_MINIMUM="$minimum" npm run desktop:build -- --bundles app dmg --config "{\"bundle\":{\"macOS\":{\"minimumSystemVersion\":\"$minimum\"}}}"
+    SHEESSHH_MACOS_MINIMUM="$minimum" npm run desktop:build -- --bundles app dmg --config "{\"bundle\":{\"macOS\":{\"minimumSystemVersion\":\"$minimum\"}}}"
   else
     npm run desktop:build -- --bundles app dmg
   fi
   echo "App ready in src-tauri/target/release/bundle/macos (disk image in bundle/dmg)."
-  echo "Drag Mr. Mak Workspace.app to Applications, then double-click 'Start Mr. Mak.command'."
+  echo "Drag Sheesshh Workspace.app to Applications, then double-click 'Start Sheesshh.command'."
 else
   npm run desktop:build:appimage
   echo "AppImage ready in src-tauri/target/release/bundle/appimage."

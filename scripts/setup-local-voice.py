@@ -47,7 +47,7 @@ def download(file, url, size, digest, opener=urllib.request.urlopen):
     file.parent.mkdir(parents=True, exist_ok=True)
     temporary = file.with_name(file.name + '.part')
     try:
-        request = urllib.request.Request(url, headers={'User-Agent': 'MrMak-LocalVoice-Setup'})
+        request = urllib.request.Request(url, headers={'User-Agent': 'Sheesshh-LocalVoice-Setup'})
         with opener(request, timeout=120) as response, temporary.open('wb') as output:
             total = 0
             while chunk := response.read(1024 * 1024):
@@ -103,11 +103,11 @@ def main():
     if too_old := macos_too_old(args.feature):
         parser.error(too_old)
     if not (3, 10) <= sys.version_info[:2] <= (3, 12):
-        if sys.platform == 'darwin' and not os.environ.get('MRMAK_VOICE_SETUP_REEXEC'):
+        if sys.platform == 'darwin' and not os.environ.get('SHEESSHH_VOICE_SETUP_REEXEC'):
             candidate = macos_python()
             if candidate:
                 print(f'Python {sys.version.split()[0]} is not supported; using {candidate}.', flush=True)
-                os.environ['MRMAK_VOICE_SETUP_REEXEC'] = '1'
+                os.environ['SHEESSHH_VOICE_SETUP_REEXEC'] = '1'
                 os.execv(candidate, [candidate, str(Path(__file__).resolve()), *sys.argv[1:]])
         hint = ''
         if sys.platform == 'darwin':

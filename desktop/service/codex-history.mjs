@@ -62,7 +62,7 @@ async function* transcriptFiles(folders, recursive) {
 
 // The per-terminal owner is proof. Never substitute another recent chat in the
 // same folder, or a subagent, merely because its timestamp looks close.
-const ownedBy = (meta, session, cwds = [session.cwd]) => meta?.originator === `mrmak_chat_${session.id}` && meta.source === 'cli' && (meta.threadSource ?? 'user') === 'user' && cwds.some(cwd => sameFolder(meta.cwd, cwd));
+const ownedBy = (meta, session, cwds = [session.cwd]) => meta?.originator === `sheesshh_chat_${session.id}` && meta.source === 'cli' && (meta.threadSource ?? 'user') === 'user' && cwds.some(cwd => sameFolder(meta.cwd, cwd));
 const byName = (a, b) => path.basename(a).toLowerCase().localeCompare(path.basename(b).toLowerCase());
 
 export async function findCodexChat(session, { full = false, now = Date.now(), home = codexHome() } = {}) {

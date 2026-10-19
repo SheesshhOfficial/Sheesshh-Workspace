@@ -11,12 +11,12 @@ const cwd = path.resolve('test-project');
 const now = new Date(2026, 9, 16, 12).getTime();
 const chat = { id: 'chat-a', cwd, createdAt: new Date(now).toISOString(), startedAt: now };
 const line = record => JSON.stringify(record) + '\n';
-const meta = (id, extra = {}) => line({ type: 'session_meta', payload: { id, cwd, source: 'cli', originator: `mrmak_chat_${chat.id}`, thread_source: 'user', ...extra } });
+const meta = (id, extra = {}) => line({ type: 'session_meta', payload: { id, cwd, source: 'cli', originator: `sheesshh_chat_${chat.id}`, thread_source: 'user', ...extra } });
 const message = (kind, text) => line({ type: 'event_msg', payload: { type: 'item_completed', item: { type: kind, id: randomUUID(), content: [{ type: kind === 'UserMessage' ? 'text' : 'Text', text }] } } });
 
 // One thread rewound once (to before its second message), then /new in the same terminal.
 async function fixture() {
-  const home = await mkdtemp(path.join(os.tmpdir(), 'mrmak-codex-threads-'));
+  const home = await mkdtemp(path.join(os.tmpdir(), 'sheesshh-codex-threads-'));
   const folder = path.join(home, 'sessions', '2026', '10', '16');
   await mkdir(folder, { recursive: true });
   const id = randomUUID(), segment = randomUUID(), next = randomUUID();
@@ -53,7 +53,7 @@ test('A Codex terminal follows its newest rollout: a rewind segment or a thread 
   assert.equal(await newerCodexRollout(chat, fork, { home, now }), null);
   // A subagent thread or another chat's thread is never followed.
   await writeFile(path.join(folder, `rollout-2026-10-16T10-02-00-${randomUUID()}.jsonl`), meta(randomUUID(), { source: { subagent: { parent_thread_id: 'x' } } }));
-  await writeFile(path.join(folder, `rollout-2026-10-16T10-03-00-${randomUUID()}.jsonl`), meta(randomUUID(), { originator: 'mrmak_chat_other' }));
+  await writeFile(path.join(folder, `rollout-2026-10-16T10-03-00-${randomUUID()}.jsonl`), meta(randomUUID(), { originator: 'sheesshh_chat_other' }));
   assert.equal(await newerCodexRollout(chat, fork, { home, now }), null);
   const started = path.join(folder, `rollout-2026-10-16T10-04-00-${next}.jsonl`);
   await writeFile(started, meta(next));

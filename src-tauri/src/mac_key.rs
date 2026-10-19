@@ -1,5 +1,5 @@
 //! macOS counterpart of the Win-key recall: a global ⌃⌥⌘Space shortcut brings
-//! back the open Mr. Mak windows. Only this one chord is registered; no other
+//! back the open Sheesshh windows. Only this one chord is registered; no other
 //! key input is observed. macOS ships no binding for it: ⌃Space and ⌃⌥Space
 //! switch input sources, ⌘Space and ⌥⌘Space are Spotlight and Finder search,
 //! and ⌃⌘Space is the emoji picker.

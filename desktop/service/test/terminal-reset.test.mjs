@@ -11,7 +11,7 @@ const stamp = { createdAt: '2026-10-17T08:00:00Z', updatedAt: '2026-10-17T08:00:
 async function fixture(screens = {}) {
   await mkdir(path.join(root, '.cache'), { recursive: true });
   const repo = await mkdtemp(path.join(root, '.cache', 'terminal-reset-'));
-  const state = path.join(repo, '.mrmak');
+  const state = path.join(repo, '.sheesshh');
   await mkdir(state);
   for (const [id, data] of Object.entries(screens)) await writeFile(path.join(state, `screen-${id}.json`), JSON.stringify({ data }));
   const sessions = await new Sessions(repo, state).init();

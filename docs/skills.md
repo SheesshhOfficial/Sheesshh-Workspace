@@ -58,7 +58,7 @@ server or perform paid work by itself.
 
 ## Use the skills in another project
 
-The release includes a separate **Mr-Mak-Skills-0.4.14.zip**. Extract it to a
+The release includes a separate **Sheesshh-Skills-0.4.14.zip**. Extract it to a
 temporary folder, then ask your agent to read `SKILLS-README.md` and copy only
 the chosen modules and their dependencies into your project. Keep full skill
 folders, including scripts, references and licences. The ZIP includes complete
@@ -79,6 +79,6 @@ A skill does not authenticate a provider or install a tool. Follow its setup
 references and bring your own account. Credentials and raw paid-job receipts
 must stay outside a shared skill pack.
 
-For an existing Mr. Mak installation, see the
-[update guide](https://github.com/witnesstodark/mr-mak-workspace/blob/main/docs/updating.md). Installing the
+For an existing Sheesshh installation, see the
+[update guide](https://github.com/SheesshhOfficial/Sheesshh-Workspace/blob/main/docs/updating.md). Installing the
 desktop update alone does not put new skills into your repository.

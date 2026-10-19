@@ -1,8 +1,8 @@
 [package]
-name = "mrmak-workspace"
+name = "sheesshh-workspace"
 version = "0.5.2"
-description = "Mr. Mak workspace and independent agent terminals"
-authors = ["Mr. Mak Workspace contributors"]
+description = "Sheesshh workspace and independent agent terminals"
+authors = ["SheesshhOfficial", "Mr. Mak Workspace contributors"]
 edition = "2021"
 rust-version = "1.77.2"
 

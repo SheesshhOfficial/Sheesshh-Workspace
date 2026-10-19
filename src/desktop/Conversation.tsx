@@ -23,7 +23,7 @@ interface Transcript { supported: boolean; messages: Message[]; activity?: ToolA
 interface Draft { text: string; paths: string[] }
 
 const time = (value: string) => new Date(value).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-const draftKey = (id: string) => `mrmak.chatDraft.${id}`
+const draftKey = (id: string) => `sheesshh.chatDraft.${id}`
 const fileName = (file: string) => file.split(/[\\/]/).filter(Boolean).pop() || file
 function savedDraft(id: string): Draft {
   try {
@@ -71,6 +71,8 @@ export default function Conversation({ session, connected, agentLabel, openTermi
   const scroller = useRef<HTMLDivElement>(null), area = useRef<HTMLDivElement>(null), input = useRef<HTMLTextAreaElement>(null)
   const follow = useRef(true), [showJump, setShowJump] = useState(false)
   const [draft, setDraft] = useState(() => savedDraft(session.id))
+  const latestDraft = useRef(draft)
+  useEffect(() => { latestDraft.current = draft }, [draft])
   const [sending, setSending] = useState(false), [uploading, setUploading] = useState(false), [voiceBusy, setVoiceBusy] = useState(false), [status, setStatus] = useState('')
   const [dragging, setDragging] = useState(false)
   const { info: dictation } = useDictation()
@@ -174,9 +176,9 @@ export default function Conversation({ session, connected, agentLabel, openTermi
       setDragging(detail.phase !== 'drop' && inside)
       if (detail.phase === 'drop' && inside) addPathsRef.current(detail.paths || [])
     }
-    window.addEventListener('mrmak-attach-file', pick)
-    window.addEventListener('mrmak-file-drop', nativeDrop)
-    return () => { window.removeEventListener('mrmak-attach-file', pick); window.removeEventListener('mrmak-file-drop', nativeDrop) }
+    window.addEventListener('sheesshh-attach-file', pick)
+    window.addEventListener('sheesshh-file-drop', nativeDrop)
+    return () => { window.removeEventListener('sheesshh-attach-file', pick); window.removeEventListener('sheesshh-file-drop', nativeDrop) }
   }, [])
 
   async function send() {
@@ -187,8 +189,13 @@ export default function Conversation({ session, connected, agentLabel, openTermi
       await api(`/sessions/${session.id}/send`, { text, paths: draft.paths })
       // A picker command unmounts this view immediately, before its draft effect
       // can run. Clear the saved draft now so returning cannot resend it.
-      saveDraft(session.id, { text: '', paths: [] })
-      setDraft({ text: '', paths: [] }); setCaret(0); follow.current = true; setShowJump(false)
+      const current = latestDraft.current
+      const remaining = current === draft ? { text: '', paths: [] } : {
+        text: current.text === draft.text ? '' : current.text,
+        paths: current.paths.filter(path => !draft.paths.includes(path)),
+      }
+      saveDraft(session.id, remaining)
+      setDraft(remaining); setCaret(remaining.text.length); follow.current = true; setShowJump(false)
       if (terminalCommand(commands, text)) openTerminal()
       void reload.current()
     } catch (error) { setStatus(`${error instanceof Error ? error.message : String(error)} Your draft is kept.`) }
@@ -287,7 +294,7 @@ export default function Conversation({ session, connected, agentLabel, openTermi
         }}
         onPaste={event => { const files = Array.from(event.clipboardData.files).filter(file => file.type.startsWith('image/')); if (files.length) { event.preventDefault(); void addImages(files) } }} />
       <div className="conversation-actions">
-        <button type="button" className="desk-icon" title="Attach files or folders" aria-label="Attach files" onClick={() => window.dispatchEvent(new Event('mrmak-attach-file'))}><Icon name="attach" size={16} /></button>
+        <button type="button" className="desk-icon" title="Attach files or folders" aria-label="Attach files" onClick={() => window.dispatchEvent(new Event('sheesshh-attach-file'))}><Icon name="attach" size={16} /></button>
         <div className="terminal-dictation"><VoiceInput id={`desktop-conversation-${session.id}`} connected={connected} disabled={sending} config={dictation} transcriber={transcribeDesktopAudio} onBusy={setVoiceBusy} onText={text => setDraft(current => ({ ...current, text: current.text ? `${current.text}${/\s$/.test(current.text) ? '' : '\n'}${text}` : text }))} /></div>
         <span className="conversation-status" role="status">{status || (uploading ? 'Saving images…' : 'Enter to send · Shift+Enter for a new line')}</span>
         {working && <button type="button" className="conversation-stop" onClick={stop} title="Interrupt the agent (Esc)"><Icon name="stop" size={14} />Stop</button>}

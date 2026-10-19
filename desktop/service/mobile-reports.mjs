@@ -5,7 +5,7 @@ import { serveReport } from './report-chrome.mjs';
 import { serveFile } from './files.mjs';
 
 const extensions = new Set(['.html', '.htm', '.md', '.txt', '.css', '.js', '.mjs', '.json', '.svg', '.png', '.jpg', '.jpeg', '.webp', '.gif', '.ico', '.mp4', '.webm', '.mp3', '.wav', '.ogg', '.pdf', '.woff', '.woff2', '.ttf', '.glb', '.gltf', '.bin', '.wasm']);
-const safePath = value => typeof value === 'string' && value.length < 1200 && !value.split(/[\\/]/).some(part => !part || part.startsWith('.') || /^(node_modules|auth\.json|tokens?\.json)$/i.test(part)) && !path.isAbsolute(value) && !value.includes(':');
+const safePath = value => typeof value === 'string' && value.length < 1200 && !value.split(/[\\/]/).some(part => !part || part.startsWith('.') || /^(node_modules|target|oauth_.*\.json|.*_secret.*\.json|auth\.json|tokens?\.json)$/i.test(part)) && !path.isAbsolute(value) && !value.includes(':');
 const fail = (message, status = 403) => { throw Object.assign(new Error(message), { status }); };
 
 export class MobileReports {
@@ -17,9 +17,11 @@ export class MobileReports {
   async open(device, { entityId, step = 0 }) {
     const entity = (await this.registry()).find(item => item.id === entityId);
     if (!entity || !safePath(entity.folder) || !Number.isInteger(step) || !safePath(entity.steps?.[step]?.path)) fail('This report is unavailable on mobile.', 404);
-    const root = await realpath(path.join(this.gateway.repo, 'workspace', entity.folder));
-    if (!within(await realpath(this.gateway.repo), root)) fail('This report folder is outside the Workspace repository.');
+    const workspaceRoot = await realpath(path.join(this.gateway.repo, 'workspace'));
+    const root = await realpath(path.join(workspaceRoot, entity.folder));
+    if (!within(await realpath(this.gateway.repo), workspaceRoot) || !within(workspaceRoot, root) || !safePath(path.relative(workspaceRoot, root))) fail('This report folder is outside the public Workspace folders.');
     const relative = entity.steps[step].path, { file, info } = await realFile(root, relative);
+    if (!safePath(path.relative(root, file))) fail('Private application files cannot be loaded by reports.');
     if (!info.isFile()) fail('Report not found', 404);
     const extension = path.extname(file).toLowerCase();
     if (!['.html', '.htm', '.md', '.txt'].includes(extension)) fail('Open this type of report on your computer.');
@@ -41,10 +43,18 @@ export class MobileReports {
     if (!safePath(relative)) fail('Invalid report path');
     let root, filePath;
     if (relative.startsWith(grant.prefix)) { root = grant.root; filePath = relative.slice(grant.prefix.length); }
-    else if (/^workspace\/_shared\/(report\.(css|js)|examples\.css)$/.test(relative)) { root = path.join(gateway.repo, 'workspace/_shared'); filePath = relative.slice('workspace/_shared/'.length); }
+    else if (/^workspace\/_shared\/(report\.(css|js)|examples\.css)$/.test(relative)) {
+      const workspaceRoot = await realpath(path.join(gateway.repo, 'workspace'));
+      root = await realpath(path.join(workspaceRoot, '_shared')); filePath = relative.slice('workspace/_shared/'.length);
+      if (!within(await realpath(gateway.repo), workspaceRoot) || !within(workspaceRoot, root) || !safePath(path.relative(workspaceRoot, root))) fail('This file is outside the public Workspace folders.');
+    }
     else fail('This file is outside the selected report.');
     if (!extensions.has(path.extname(filePath).toLowerCase())) fail('This file type is unavailable in report previews.');
     const { file, info } = await realFile(root, filePath);
+    // realFile enforces the folder boundary; also reject links into private
+    // children and aliases whose target has a disallowed file type.
+    if (!safePath(path.relative(await realpath(root), file))) fail('Private application files cannot be loaded by reports.');
+    if (!extensions.has(path.extname(file).toLowerCase())) fail('This file type is unavailable in report previews.');
     if (!info.isFile()) fail('File not found', 404);
     const base = `${gateway.origin}/mobile/view/${match[1]}/`;
     // A report is an opaque sandbox with access only to this short-lived folder grant.

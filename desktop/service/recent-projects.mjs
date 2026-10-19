@@ -35,7 +35,7 @@ export async function recentProjects({ repo, sessions = [], pinned = [] }) {
   const candidates = [
     { path: repo, source: 'workspace', at: null },
     ...claude, ...codex,
-    ...sessions.map(item => ({ path: item.cwd, source: 'mrmak', at: item.updatedAt || item.createdAt || null })),
+    ...sessions.map(item => ({ path: item.cwd, source: 'sheesshh', at: item.updatedAt || item.createdAt || null })),
     ...pinned.map(folder => ({ path: folder, source: 'pinned', at: null })),
   ];
   const projects = new Map();

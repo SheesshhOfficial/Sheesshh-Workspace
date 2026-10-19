@@ -7,8 +7,8 @@ $taskRoot = [System.IO.Path]::GetFullPath($PSScriptRoot)
 # updater launched in its terminal. Reject before building or installing.
 if ($Mode -eq 'Update') {
   $taskProcesses = @(Get-CimInstance Win32_Process -ErrorAction Stop)
-  if ($env:MRMAK_PARENT_PID -or (Test-MakAncestor $taskProcesses $PID)) {
-    throw 'Run Setup.ps1 -Mode Update in a separate Windows PowerShell window opened from Start, outside Mr. Mak. Quitting Mr. Mak would stop an updater launched in its chat.'
+  if ($env:SHEESSHH_PARENT_PID -or (Test-MakAncestor $taskProcesses $PID)) {
+    throw 'Run Setup.ps1 -Mode Update in a separate Windows PowerShell window opened from Start, outside Sheesshh. Quitting Sheesshh would stop an updater launched in its chat.'
   }
   if (-not $InstallDirectory) { $InstallDirectory = Get-MakInstallDirectory }
   $InstallDirectory = [IO.Path]::GetFullPath($InstallDirectory)
@@ -25,11 +25,13 @@ try {
   $taskCodex = Get-Command codex -ErrorAction SilentlyContinue
   $taskClaude = Get-Command claude -ErrorAction SilentlyContinue
   $taskOpenCode = Get-Command opencode -ErrorAction SilentlyContinue
-  Write-Host 'Mr. Mak Workspace setup'
+  $taskAntigravity = Get-Command agy -ErrorAction SilentlyContinue
+  $taskKimi = Get-Command kimi -ErrorAction SilentlyContinue
+  Write-Host 'Sheesshh Workspace setup'
   Write-Host ('Node: ' + [bool]$taskNode + ' | npm: ' + [bool]$taskNpm + ' | Rust (desktop source build only): ' + [bool]$taskCargo)
   Write-Host ('Codex CLI: ' + [bool]$taskCodex + ' | Claude Code CLI: ' + [bool]$taskClaude + ' | OpenCode: ' + [bool]$taskOpenCode)
-  if (-not $taskCodex -and -not $taskClaude -and -not $taskOpenCode) {
-    throw 'Install and configure Codex CLI, Claude Code CLI or OpenCode before setting up this Workspace. See docs/getting-started.md.'
+  if (-not $taskCodex -and -not $taskClaude -and -not $taskOpenCode -and -not $taskAntigravity -and -not $taskKimi) {
+    Write-Warning 'No agent CLI found. Preview still works; install Codex, Claude Code, OpenCode, Antigravity or Kimi before opening agent chats.'
   }
   if ($Mode -eq 'Check') {
     Write-Host 'The Windows installer needs no build toolchain. See docs/getting-started.md.'
@@ -53,7 +55,7 @@ try {
     $taskBundle = Join-Path $taskRoot 'src-tauri/target/release/bundle/nsis'
     if ($Mode -eq 'Desktop') {
       Write-Host ('Installer ready in ' + $taskBundle)
-      Write-Host 'Run the installer, then double-click Start Mr. Mak.cmd.'
+      Write-Host 'Run the installer, then double-click Start Sheesshh.cmd.'
       exit 0
     }
     $taskVersion = (Get-Content -LiteralPath (Join-Path $taskRoot 'src-tauri/tauri.conf.json') -Raw | ConvertFrom-Json).version
@@ -61,7 +63,7 @@ try {
       Sort-Object LastWriteTime -Descending | Select-Object -First 1
     if (-not $taskSetup) { throw ('No ' + $taskVersion + ' installer was found in ' + $taskBundle + '.') }
     # The silent installer closes a running app without asking, and agents may
-    # still be working in it. Wait until the owner quits Mr. Mak and its service.
+    # still be working in it. Wait until the owner quits Sheesshh and its service.
     $taskInstallDirectories = @($InstallDirectory)
     # Include custom installations already running, even if their service takes
     # a moment to exit after the native window disappears. Never kill processes.
@@ -74,15 +76,15 @@ try {
       return @(Get-MakUpdateProcesses @(Get-CimInstance Win32_Process -ErrorAction Stop) $taskInstallDirectories).Count -gt 0
     }
     if (& $taskRunning) {
-      Write-Host 'Finish active agent tasks, then choose Quit from the Mr. Mak tray menu. Setup continues by itself.'
+      Write-Host 'Finish active agent tasks, then choose Quit from the Sheesshh tray menu. Setup continues by itself.'
       while (& $taskRunning) { Start-Sleep -Seconds 2 }
     }
     Write-Host ('Installing ' + $taskSetup.Name)
     # NSIS requires /D to be last and unquoted, including paths with spaces.
     $taskInstaller = Start-Process -FilePath $taskSetup.FullName -ArgumentList @('/S', ('/D=' + $InstallDirectory)) -WindowStyle Hidden -Wait -PassThru
     if ($taskInstaller.ExitCode -ne 0) { throw ('The installer stopped with code ' + $taskInstaller.ExitCode + '. Run it from ' + $taskBundle + ' to see its message.') }
-    Write-Host 'Installed. Starting Mr. Mak.'
-    $taskApp = Join-Path $InstallDirectory 'mrmak-workspace.exe'
+    Write-Host 'Installed. Starting Sheesshh.'
+    $taskApp = Join-Path $InstallDirectory 'sheesshh-workspace.exe'
     if (-not (Test-Path -LiteralPath $taskApp)) { throw ('The installed app was not found in ' + $InstallDirectory + '. Open the installer to inspect its destination.') }
     Start-Process -FilePath $taskApp -ArgumentList @('--repo', ('"' + $taskRoot + '"')) -WorkingDirectory $taskRoot -WindowStyle Hidden
   }

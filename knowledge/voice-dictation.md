@@ -1,10 +1,10 @@
 # Local dictation
 
 Dictation puts recognized text into the focused terminal or text field.
-Mr. Mak's voice assistant instead carries on a conversation and can call tools.
+Sheesshh's voice assistant instead carries on a conversation and can call tools.
 You can use either, both or neither.
 
-Mr. Mak now has built-in microphone dictation for desktop chats, the Mak composer,
+Sheesshh now has built-in microphone dictation for desktop chats, the Sheesshh composer,
 and mobile. See [setup and behavior](../docs/mobile-access.md#voice-input).
 Install free local faster-whisper and its multilingual small model once with
 Python 3.10-3.12: `python scripts/setup-local-voice.py dictation` on Windows

@@ -14,7 +14,7 @@ import tempfile
 def check(image: Path) -> None:
     image = image.resolve(strict=True)
     image.chmod(image.stat().st_mode | 0o555)
-    with tempfile.TemporaryDirectory(prefix='mrmak-appimage-') as temporary:
+    with tempfile.TemporaryDirectory(prefix='sheesshh-appimage-') as temporary:
         directory = Path(temporary)
         directory.chmod(0o755)  # The non-owner must be able to traverse /tmp.
         root = directory / 'squashfs-root'
@@ -38,7 +38,7 @@ def check(image: Path) -> None:
         nodes = [p for p in root.rglob('node') if p.is_file() and 'runtime' in p.relative_to(root).parts]
         if not nodes:
             failures.append('Bundled runtime/node is missing')
-        launchers = [root / 'AppRun', root / 'AppRun.wrapped', root / 'usr/bin/mrmak-workspace', *nodes]
+        launchers = [root / 'AppRun', root / 'AppRun.wrapped', root / 'usr/bin/sheesshh-workspace', *nodes]
         for item in launchers:
             if not item.is_file() or not item.resolve().is_relative_to(root) or item.stat().st_mode & 0o5 != 0o5:
                 failures.append(f'{item.relative_to(root)}: missing or not readable/executable by other users')

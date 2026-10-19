@@ -1,4 +1,9 @@
 # About the owner
 
-Optional. Add only the background you want agents working in this project to know.
-There is no personal profile bundled with the template.
+- Name / brand: Sheesshh
+- GitHub: https://github.com/SheesshhOfficial
+- Workspace repository: https://github.com/SheesshhOfficial/Sheesshh-Workspace
+
+This is Sheesshh's personal workspace for projects, notes and agent chats.
+Other personal details, accounts, domains and contact details are not configured.
+Ask before adding them; never invent them.

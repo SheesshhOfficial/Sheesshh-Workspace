@@ -58,7 +58,7 @@ jobs:
       - name: Upload Linux AppImage
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: mr-mak-workspace-linux-appimage
+          name: sheesshh-workspace-linux-appimage
           path: src-tauri/target/release/bundle/appimage/*.AppImage
           if-no-files-found: error
           retention-days: 14
@@ -82,19 +82,19 @@ jobs:
       # failure still fails the job but cannot hide whether the app builds.
       - run: npm run desktop:build -- --bundles app
       - name: Verify the app's code signature
-        run: codesign --verify --deep --strict --verbose=2 "src-tauri/target/release/bundle/macos/Mr. Mak Workspace.app"
+        run: codesign --verify --deep --strict --verbose=2 "src-tauri/target/release/bundle/macos/Sheesshh Workspace.app"
       - run: cargo test --manifest-path src-tauri/Cargo.toml login_path::tests
       - run: python3 scripts/test-local-voice-setup.py
       - name: Verify packaged Node and native terminals
-        run: '"src-tauri/target/release/bundle/macos/Mr. Mak Workspace.app/Contents/Resources/runtime/node" scripts/check-bundled-runtime.mjs'
+        run: '"src-tauri/target/release/bundle/macos/Sheesshh Workspace.app/Contents/Resources/runtime/node" scripts/check-bundled-runtime.mjs'
       - name: Archive macOS app with executable permissions
         run: |
-          ditto -c -k --sequesterRsrc --keepParent "src-tauri/target/release/bundle/macos/Mr. Mak Workspace.app" mr-mak-workspace-macos.zip
+          ditto -c -k --sequesterRsrc --keepParent "src-tauri/target/release/bundle/macos/Sheesshh Workspace.app" sheesshh-workspace-macos.zip
       - name: Upload macOS app
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: mr-mak-workspace-macos-app
-          path: mr-mak-workspace-macos.zip
+          name: sheesshh-workspace-macos-app
+          path: sheesshh-workspace-macos.zip
           if-no-files-found: error
           retention-days: 14
       # The macOS app renders with WKWebView, so its UI checks run in WebKit.

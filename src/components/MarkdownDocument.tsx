@@ -22,7 +22,7 @@ export function MarkdownView({ text, baseUrl }: { text: string; baseUrl?: string
 }
 
 export default function MarkdownDocument({ file }: { file: Preview }) {
-  const draftKey = `mrmak.md-draft.${file.path}`
+  const draftKey = `sheesshh.md-draft.${file.path}`
   const [saved, setSaved] = useState(file.text || '')
   const [draft, setDraft] = useState(() => restoreDraft(draftKey, file.text || ''))
   const [revision, setRevision] = useState(file.revision)
@@ -42,13 +42,13 @@ export default function MarkdownDocument({ file }: { file: Preview }) {
     setBusy(true); setStatus('Saving…')
     try {
       const result = await api<Preview>('/files/markdown', { path: file.path, text: draft, revision })
-      setSaved(result.text || ''); setDraft(result.text || ''); setRevision(result.revision); setStatus('Saved')
+      setSaved(result.text || ''); setDraft(current => current === draft ? result.text || '' : current); setRevision(result.revision); setStatus('Saved')
     } catch (error) { setStatus(error instanceof Error ? error.message : String(error)) }
     finally { setBusy(false) }
   }
   return <section className="markdown-document">
     <div className="document-toolbar"><div className="document-modes" aria-label="Markdown mode"><button aria-pressed={!editing} onClick={() => setEditing(false)}>Preview</button><button aria-pressed={editing} onClick={() => setEditing(true)}>Edit</button></div>
-      <span className="document-status" role="status">{status || (dirty ? 'Unsaved draft' : 'Markdown')}</span>
+      <span className="document-status" role="status">{status === 'Saved' && dirty ? 'Earlier version saved; newer edits are unsaved' : status || (dirty ? 'Unsaved draft' : 'Markdown')}</span>
       {dirty && <button disabled={busy} onClick={() => { setDraft(saved); setStatus('Draft discarded') }}>Discard</button>}
       <button className="document-save" disabled={!dirty || busy} onClick={() => void save()}>Save</button>
     </div>

@@ -16,7 +16,7 @@ async function fixture() {
   await mkdir(path.join(repo, 'workspace', 'A space'), { recursive: true });
   await mkdir(path.join(repo, 'inbox')); await mkdir(path.join(repo, 'projects'));
   await mkdir(path.join(repo, 'ui'));
-  await writeFile(path.join(repo, 'ui', 'index.html'), '<html>Mr. Mak UI</html>');
+  await writeFile(path.join(repo, 'ui', 'index.html'), '<html>Sheesshh UI</html>');
   await writeFile(path.join(repo, 'workspace', 'workspace.json'), JSON.stringify({ entities: [] }));
   await writeFile(path.join(repo, 'workspace', 'A space', 'report.html'), '<html><img src="image.bin"></html>');
   await writeFile(path.join(repo, 'workspace', 'A space', 'image.bin'), Buffer.from('0123456789'));
@@ -89,6 +89,9 @@ test('real PTY supports Unicode, reconnect snapshots, resizing, exit and saved h
     const snapshot = await service.sessions.snapshot(session.id);
     assert.equal(snapshot.session.cols, 74); assert.equal(snapshot.session.rows, 22);
     assert.ok(snapshot.data.includes('UNICODE-Привет'));
+    // The server snapshot can advance before the websocket client processes
+    // its output frame. Wait for delivery instead of racing the event loop.
+    await until(() => messages.some(item => item.type === 'output'));
     assert.ok(messages.some(item => item.type === 'output'));
     await service.sessions.persist();
     service.sessions.input(session.id, 'exit 7\r');
@@ -223,9 +226,9 @@ test('context access reads project guidance and excludes credential and runtime 
     await writeFile(path.join(repo, 'projects', 'brief.md'), '# Project brief\nA task description.');
     assert.match((await library.read('projects/brief.md')).text, /task description/);
     await assert.rejects(library.read('.env'), /Private runtime/);
-    await mkdir(path.join(repo, '.mrmak'), { recursive: true });
-    await writeFile(path.join(repo, '.mrmak', 'runtime.json'), '{}');
-    await assert.rejects(library.read('.mrmak/runtime.json'), /Private runtime/);
+    await mkdir(path.join(repo, '.sheesshh'), { recursive: true });
+    await writeFile(path.join(repo, '.sheesshh', 'runtime.json'), '{}');
+    await assert.rejects(library.read('.sheesshh/runtime.json'), /Private runtime/);
   } finally { await service.close(); }
 });
 

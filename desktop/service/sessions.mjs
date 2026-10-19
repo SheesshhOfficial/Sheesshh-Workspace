@@ -109,7 +109,7 @@ export class Sessions extends EventEmitter {
   }
 
   async create(options) {
-    if (this.closed) throw new Error('Mr. Mak is shutting down');
+    if (this.closed) throw new Error('Sheesshh is shutting down');
     if (this.active().length >= 80) throw new Error('Close a tab before opening another (80 open tab limit). Closed chats remain in History.');
     const agent = String(options.agent || 'codex');
     nativeConversationId(options.resumeId);
@@ -180,7 +180,7 @@ export class Sessions extends EventEmitter {
     const noDaemon = session.agent === 'codex' && await codexSupportsNoDaemon(env);
     if (this.closed || !session.open) throw new Error('The chat was closed before its terminal started.');
     const command = terminalCommand(session.agent, { bypass: session.bypass, resumeId, nativeId: session.nativeId, effort: session.effort, opencodeMajor, antigravityLog, noDaemon, ...first });
-    if (session.agent === 'codex') env.CODEX_INTERNAL_ORIGINATOR_OVERRIDE = `mrmak_chat_${session.id}`;
+    if (session.agent === 'codex') env.CODEX_INTERNAL_ORIGINATOR_OVERRIDE = `sheesshh_chat_${session.id}`;
     if (session.terminal) this.resetTerminal(session);
     const proc = pty.spawn(command.file, command.args, ptyOptions({ cwd: session.cwd, env, cols: session.cols, rows: session.rows }));
     session.process = proc;
@@ -226,7 +226,7 @@ export class Sessions extends EventEmitter {
         if (match) { session.nativeId = match[1]; this.changed(session); }
       }).catch(() => {});
       if (session.agent === 'opencode') readOpencodeState(this.stateDir, session.id).then(state => {
-        if (state?.launchId === env.MRMAK_OPENCODE_LAUNCH_ID) {
+        if (state?.launchId === env.SHEESSHH_OPENCODE_LAUNCH_ID) {
           this.bindNative(session, { id: state.nativeId });
           if (state.completion && session.nativeId === state.nativeId) this.nativeEvent(session, { kind: 'turn-completed', id: state.completion });
         }
@@ -238,7 +238,7 @@ export class Sessions extends EventEmitter {
     if (session.agent === 'antigravity') session.stopNativeWatch = watchAntigravity(this.stateDir, session.id, id => {
       if (session.process === proc) this.bindAntigravity(session, id);
     });
-    if (session.agent === 'opencode') session.stopNativeWatch = watchOpencode(this.stateDir, session, env.MRMAK_OPENCODE_LAUNCH_ID, state => {
+    if (session.agent === 'opencode') session.stopNativeWatch = watchOpencode(this.stateDir, session, env.SHEESSHH_OPENCODE_LAUNCH_ID, state => {
       this.bindNative(session, { id: state.nativeId });
       if (session.nativeId !== state.nativeId) return;
       if (state.completion) this.nativeEvent(session, { kind: 'turn-completed', id: state.completion });
@@ -380,9 +380,9 @@ export class Sessions extends EventEmitter {
   input(id, data, { coordinator = false, submit = false } = {}) {
     const session = this.get(id);
     if (!session.process) throw new Error('This terminal is stopped. Resume it before sending a message.');
-    if (coordinator && session.agent === 'shell') throw new Error('Mr. Mak can send messages to agent chats; type shell commands directly in the local shell.');
+    if (coordinator && session.agent === 'shell') throw new Error('Sheesshh can send messages to agent chats; type shell commands directly in the local shell.');
     if (typeof data !== 'string' || data.length > 64000) throw new Error('Message is too large');
-    if (coordinator && Date.now() - Date.parse(session.lastInputAt || 0) < 2500) throw new Error('You are typing in this chat. Wait a moment before sending through Mr. Mak.');
+    if (coordinator && Date.now() - Date.parse(session.lastInputAt || 0) < 2500) throw new Error('You are typing in this chat. Wait a moment before sending through Sheesshh.');
     if (coordinator) {
       // Bracketed paste keeps multi-line text a single CLI prompt, then Enter submits it.
       const clean = data.replace(/[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/g, '').replaceAll('\r', '');
@@ -406,7 +406,7 @@ export class Sessions extends EventEmitter {
     return { delivered: true, sessionId: id, name: session.name, note: 'Text delivered to the terminal. Check the screen for CLI readiness or permission prompts; delivery does not confirm the agent accepted the task.' };
   }
 
-  // Keys Mr. Mak presses on the user's behalf, such as menu navigation. They are
+  // Keys Sheesshh presses on the user's behalf, such as menu navigation. They are
   // not manual typing, so a message sent right after them is not held back.
   keys(id, data) {
     const session = this.get(id);
@@ -553,7 +553,7 @@ export class Sessions extends EventEmitter {
   }
   async resume(id, nativeId) {
     nativeConversationId(nativeId);
-    if (this.closed) throw new Error('Mr. Mak is shutting down');
+    if (this.closed) throw new Error('Sheesshh is shutting down');
     const session = this.get(id);
     if (session.stopping) await session.stopping;
     if (session.process) return publicSession(session);

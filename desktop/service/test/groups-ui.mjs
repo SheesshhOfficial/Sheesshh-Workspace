@@ -18,8 +18,8 @@ const chats = [['g-0', 'Director', 'ThugLife', true], ['g-1', 'Network', 'ThugLi
 }));
 await mkdir(path.join(repo, 'workspace'));
 await writeFile(path.join(repo, 'workspace/workspace.json'), '{"entities":[]}');
-await mkdir(path.join(repo, '.mrmak'));
-await writeFile(path.join(repo, '.mrmak/sessions.json'), JSON.stringify(chats));
+await mkdir(path.join(repo, '.sheesshh'));
+await writeFile(path.join(repo, '.sheesshh/sessions.json'), JSON.stringify(chats));
 let service, browser;
 try {
   service = await createService({ repo, uiDir: path.join(root, 'dist'), mcpOptions: { home: repo, env: {} } });

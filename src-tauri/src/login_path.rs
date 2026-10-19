@@ -59,12 +59,12 @@ fn bounded_output(command: &mut std::process::Command, timeout: std::time::Durat
     receive.recv_timeout(Duration::from_millis(100)).ok().flatten()
 }
 
-// Parse `__MRMAK_PATH__<path>__MRMAK_END__` followed by NUL-terminated
+// Parse `__SHEESSHH_PATH__<path>__SHEESSHH_END__` followed by NUL-terminated
 // NAME=value pairs. Output from rc files before the marker is ignored.
 #[cfg(any(target_os = "macos", test))]
 fn parse_probe(text: &str) -> Option<(String, Vec<(String, String)>)> {
-    let (_, rest) = text.rsplit_once("__MRMAK_PATH__")?;
-    let (path, rest) = rest.split_once("__MRMAK_END__")?;
+    let (_, rest) = text.rsplit_once("__SHEESSHH_PATH__")?;
+    let (path, rest) = rest.split_once("__SHEESSHH_END__")?;
     if path.is_empty() || path.contains(['\n', '\r', '\0']) { return None; }
     let vars = rest.split_terminator('\0').filter_map(|pair| pair.split_once('='))
         .filter(|(name, value)| IMPORTED.contains(name) && !value.is_empty() && !value.contains(['\n', '\r']))
@@ -80,7 +80,7 @@ pub fn discover() -> (String, Vec<(String, String)>) {
     let shell = std::env::var("SHELL").unwrap_or_else(|_| "/bin/zsh".into());
     // awk prints the variables, so the probe stays valid in zsh, bash and fish.
     let script = format!(
-        "printf '__MRMAK_PATH__%s__MRMAK_END__' \"$PATH\"; /usr/bin/awk 'BEGIN {{ for (i = 1; i < ARGC; i++) if (ARGV[i] in ENVIRON) printf \"%s=%s%c\", ARGV[i], ENVIRON[ARGV[i]], 0 }}' {}",
+        "printf '__SHEESSHH_PATH__%s__SHEESSHH_END__' \"$PATH\"; /usr/bin/awk 'BEGIN {{ for (i = 1; i < ARGC; i++) if (ARGV[i] in ENVIRON) printf \"%s=%s%c\", ARGV[i], ENVIRON[ARGV[i]], 0 }}' {}",
         IMPORTED.join(" ")
     );
     let mut command = std::process::Command::new(shell);
@@ -126,13 +126,13 @@ mod tests {
     }
     #[test]
     fn probe_output_keeps_path_and_only_allowlisted_variables() {
-        let text = "rc noise __MRMAK_PATH__/bin__MRMAK_END__ \
-                    __MRMAK_PATH__/opt/homebrew/bin:/bin__MRMAK_END__CODEX_HOME=/Users/test/a b\0LANG=en_US.UTF-8\0\
+        let text = "rc noise __SHEESSHH_PATH__/bin__SHEESSHH_END__ \
+                    __SHEESSHH_PATH__/opt/homebrew/bin:/bin__SHEESSHH_END__CODEX_HOME=/Users/test/a b\0LANG=en_US.UTF-8\0\
                     OPENAI_API_KEY=secret\0XDG_CONFIG_HOME=\0LC_ALL=x\ny\0bye";
         let (path, vars) = parse_probe(text).unwrap();
         assert_eq!(path, "/opt/homebrew/bin:/bin");
         assert_eq!(vars, vec![("CODEX_HOME".into(), "/Users/test/a b".into()), ("LANG".into(), "en_US.UTF-8".into())]);
-        assert!(parse_probe("__MRMAK_PATH____MRMAK_END__").is_none());
+        assert!(parse_probe("__SHEESSHH_PATH____SHEESSHH_END__").is_none());
         assert!(parse_probe("no markers").is_none());
     }
     #[test]

@@ -6,7 +6,7 @@ import { Icon } from './Icons'
 interface Stats { supported: boolean; userMessages: number; truncated: boolean; handoff: Handoff | null }
 interface Snooze { never?: boolean; after?: number }
 
-const key = (id: string) => `mrmak.handoff.${id}`
+const key = (id: string) => `sheesshh.handoff.${id}`
 function readSnooze(id: string): Snooze { try { return JSON.parse(localStorage.getItem(key(id)) || '{}') || {} } catch { return {} } }
 function saveSnooze(id: string, value: Snooze) { try { localStorage.setItem(key(id), JSON.stringify(value)) } catch { /* Applies to this window only. */ } }
 

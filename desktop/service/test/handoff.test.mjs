@@ -19,7 +19,7 @@ test('a handoff is the reply to the latest request, from its heading', () => {
 });
 
 test('a first message is one safe argument, placed before Claude\'s variadic --add-dir', async () => {
-  const bin = await mkdtemp(path.join(os.tmpdir(), 'mrmak-first-prompt-'));
+  const bin = await mkdtemp(path.join(os.tmpdir(), 'sheesshh-first-prompt-'));
   for (const name of ['claude', 'codex']) await writeFile(path.join(bin, process.platform === 'win32' ? `${name}.exe` : name), '', { mode: 0o755 });
   const previous = process.env.PATH;
   process.env.PATH = bin;
@@ -49,7 +49,7 @@ function fixture(reply) {
 }
 
 test('accepting a handoff asks the chat, saves its summary and opens a new chat in the same project', async () => {
-  const repo = await mkdtemp(path.join(os.tmpdir(), 'mrmak-handoff-'));
+  const repo = await mkdtemp(path.join(os.tmpdir(), 'sheesshh-handoff-'));
   const { sessions, session, inputs, created, opened, changes, transcripts } = fixture('# Handoff\n## Next\nAdd parry timing');
   const handoffs = new Handoffs({ repo, sessions, transcripts, opened: id => opened.push(id), changed: (id, job) => changes.push(job.status) });
   assert.equal(handoffs.start('old').status, 'summarizing');
@@ -71,7 +71,7 @@ test('accepting a handoff asks the chat, saves its summary and opens a new chat 
 });
 
 test('a handoff fails clearly when the chat stops or the reply has no summary', async () => {
-  const repo = await mkdtemp(path.join(os.tmpdir(), 'mrmak-handoff-'));
+  const repo = await mkdtemp(path.join(os.tmpdir(), 'sheesshh-handoff-'));
   const stopped = fixture('# Handoff');
   const first = new Handoffs({ repo, ...stopped, opened: () => {}, changed: () => {} });
   first.start('old'); stopped.sessions.emit('session', { id: 'old', status: 'exited', completionVersion: 3 });

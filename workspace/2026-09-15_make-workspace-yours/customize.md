@@ -4,7 +4,7 @@
 
 Use the right-hand Settings rail for the available display and behavior controls.
 Terminal text settings and tab colors live with Chats. The Win-key shortcut is
-optional: when enabled, a single Win press returns to hidden Mr. Mak windows;
+optional: when enabled, a single Win press returns to hidden Sheesshh windows;
 when they are already in view, it opens Start. Win combinations remain normal.
 On macOS, the same option is under Settings > Shortcut: its key combination
 brings back the windows from any app, and clicking the Dock icon also restores

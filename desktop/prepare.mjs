@@ -89,8 +89,8 @@ if (process.platform !== 'win32') { const { chmod } = await import('node:fs/prom
 if (process.platform === 'darwin') {
   const foreign = (linkedLibraries(bundledNode) || ['(otool failed; install the Xcode Command Line Tools)']).filter(file => !systemLibrary(file));
   if (foreign.length) throw new Error(`The bundled Node links libraries outside macOS: ${foreign.join(', ')}`);
-  // MRMAK_MACOS_MINIMUM is set by setup.sh when it raises minimumSystemVersion with --config.
-  const minos = minimumMacos(bundledNode), declared = process.env.MRMAK_MACOS_MINIMUM || await declaredMacos();
+  // SHEESSHH_MACOS_MINIMUM is set by setup.sh when it raises minimumSystemVersion with --config.
+  const minos = minimumMacos(bundledNode), declared = process.env.SHEESSHH_MACOS_MINIMUM || await declaredMacos();
   if (minos && newerMacos(minos, declared)) {
     console.warn(`\n[mak] WARNING: the bundled Node ${process.version} requires macOS ${minos}, but the app declares macOS ${declared}.`);
     console.warn(`[mak] On older macOS versions the app opens but its service cannot start. Build with Node 22, or use ./setup.sh desktop, which raises the declared minimum.\n`);
@@ -114,7 +114,7 @@ if (process.platform === 'darwin') {
 await cp(path.join(repo, 'dist'), path.join(runtime, 'ui'), { recursive: true });
 // Vite deliberately does not copy the enormous workspace junction. Bundle only UI assets.
 try { await access(path.join(repo, 'public', 'assets')); await cp(path.join(repo, 'public', 'assets'), path.join(runtime, 'ui', 'assets'), { recursive: true }); } catch { /* Optional brand assets. */ }
-await writeFile(path.join(runtime, 'README.txt'), `Mr. Mak local runtime for ${process.platform}. User repositories, keys and CLI logins are not included.\n`);
+await writeFile(path.join(runtime, 'README.txt'), `Sheesshh local runtime for ${process.platform}. User repositories, keys and CLI logins are not included.\n`);
 const licenseCandidates = [
   path.join(path.dirname(process.execPath), 'LICENSE'),
   path.join(path.dirname(path.dirname(process.execPath)), 'LICENSE'),

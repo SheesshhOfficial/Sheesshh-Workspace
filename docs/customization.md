@@ -15,7 +15,7 @@ short English label chosen in New chat or from a tab's right-click menu, and
 renamed or deleted from its chip's right-click menu; History's group filters
 delete a group that only closed chats still carry. Collapsed groups are
 remembered per installation. The Win-key shortcut is
-optional: when enabled, a single Win press returns to hidden Mr. Mak windows;
+optional: when enabled, a single Win press returns to hidden Sheesshh windows;
 when they are already in view, it opens Start. Win combinations remain normal.
 On macOS, the same option is under Settings > Shortcut: its key combination
 brings back the windows from any app, and clicking the Dock icon also restores

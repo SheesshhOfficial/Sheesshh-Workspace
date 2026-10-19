@@ -13,7 +13,7 @@ interface MobileState {
   dictation?: DictationInfo
 }
 export interface MobileEvent { type: string; id?: string; session?: ChatSession; sessions?: ChatSession[]; data?: string; sequence?: number; error?: string; dictation?: DictationInfo }
-let state: MobileState = { ready: false, authenticated: false, connected: false, error: '', sessions: [], agents: [], selectedId: localStorage.getItem('mrmak.mobile.selected') }
+let state: MobileState = { ready: false, authenticated: false, connected: false, error: '', sessions: [], agents: [], selectedId: localStorage.getItem('sheesshh.mobile.selected') }
 const listeners = new Set<() => void>(), events = new Set<(event: MobileEvent) => void>()
 let socket: WebSocket | null = null, timer = 0, heartbeat = 0, handshake = 0, starting = false, stopped = false, connectionVersion = 0
 let bootstrapAbort: AbortController | null = null, lastResume = 0, authRejected = false
@@ -42,7 +42,7 @@ export async function transcribeMobileAudio(recording: VoiceDraft, signal: Abort
   if (!response.ok) throw new MobileError(result.error || 'Could not transcribe this recording. Try again.', response.status)
   return result
 }
-export function selectMobileChat(id: string) { localStorage.setItem('mrmak.mobile.selected', id); update({ selectedId: id }) }
+export function selectMobileChat(id: string) { localStorage.setItem('sheesshh.mobile.selected', id); update({ selectedId: id }) }
 export function onMobileEvent(listener: (event: MobileEvent) => void) { events.add(listener); return () => { events.delete(listener) } }
 export function mobileEvent(event: Record<string, unknown>) { if (socket?.readyState === WebSocket.OPEN) socket.send(JSON.stringify(event)) }
 function releaseConnection() {
@@ -104,15 +104,15 @@ export async function startMobile() {
     }, 5000)
   } catch (error) {
     if (version !== connectionVersion || controller.signal.aborted) return
-    update({ ready: true, connected: false, error: error instanceof MobileError && error.status === 401 ? '' : 'Your computer is unavailable. Keep Mr. Mak running and Tailscale connected.' })
+    update({ ready: true, connected: false, error: error instanceof MobileError && error.status === 401 ? '' : 'Your computer is unavailable. Keep Sheesshh running and Tailscale connected.' })
     if (!(error instanceof MobileError && error.status === 401)) reconnect()
   } finally { if (version === connectionVersion) { starting = false; bootstrapAbort = null } }
 }
 export async function disconnectMobile() {
   await mobileApi('/disconnect', {}); stopped = true; authRejected = true; releaseConnection()
-  for (const key of Object.keys(localStorage)) if (key.startsWith('mrmak.mobile.')) localStorage.removeItem(key)
+  for (const key of Object.keys(localStorage)) if (key.startsWith('sheesshh.mobile.')) localStorage.removeItem(key)
   resetMobileNavigation()
-  sessionStorage.removeItem('mrmak.mobile.pair'); sessionStorage.removeItem('mrmak.mobile.pending')
+  sessionStorage.removeItem('sheesshh.mobile.pair'); sessionStorage.removeItem('sheesshh.mobile.pending')
   await clearVoiceDrafts().catch(() => {})
   update({ authenticated: false, connected: false, sessions: [], selectedId: null }); stopped = false
 }

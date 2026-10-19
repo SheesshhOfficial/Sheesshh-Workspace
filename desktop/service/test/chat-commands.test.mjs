@@ -26,7 +26,7 @@ test('the composer finds the command word at the caret and completes it', () => 
 async function put(file, text) { await mkdir(path.dirname(file), { recursive: true }); await writeFile(file, text); }
 
 test('chat commands list built-ins, project and user commands, skills and enabled plugins per CLI', async t => {
-  const root = await mkdtemp(path.join(os.tmpdir(), 'mrmak-commands-'));
+  const root = await mkdtemp(path.join(os.tmpdir(), 'sheesshh-commands-'));
   t.after(() => rm(root, { recursive: true, force: true }));
   const home = path.join(root, 'home'), repo = path.join(root, 'repo'), cwd = path.join(repo, 'game');
   await mkdir(path.join(repo, '.git'), { recursive: true });

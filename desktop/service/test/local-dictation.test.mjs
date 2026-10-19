@@ -15,7 +15,7 @@ const stub = {
 };
 
 test('a local transcript keeps accented letters through the Python output pipe', { skip: !installed && 'local dictation Python is not installed' }, async t => {
-  const folder = await mkdtemp(path.join(os.tmpdir(), 'mrmak-whisper-stub-'));
+  const folder = await mkdtemp(path.join(os.tmpdir(), 'sheesshh-whisper-stub-'));
   await mkdir(path.join(folder, 'faster_whisper'));
   for (const [name, source] of Object.entries(stub)) await writeFile(path.join(folder, 'faster_whisper', name), source);
   const previous = process.env.PYTHONPATH;

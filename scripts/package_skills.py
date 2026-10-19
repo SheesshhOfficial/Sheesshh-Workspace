@@ -74,7 +74,7 @@ def collect():
 
 def verify(archive):
     # Extract outside the repository: local author files cannot hide missing resources.
-    with tempfile.TemporaryDirectory(prefix='mrmak-skills-check-') as temporary:
+    with tempfile.TemporaryDirectory(prefix='sheesshh-skills-check-') as temporary:
         base = Path(temporary).resolve()
         with zipfile.ZipFile(archive) as bundle:
             names = bundle.namelist()
@@ -131,7 +131,7 @@ def main():
         print(f"Verified {manifest['version']}: {len(manifest['skills'])} skills, {len(manifest['files'])} payload files")
         return
     version = json.loads((ROOT / 'package.json').read_text(encoding='utf-8'))['version']
-    output = (args.output or ROOT / '.cache/releases' / f'Mr-Mak-Skills-{version}.zip').resolve()
+    output = (args.output or ROOT / '.cache/releases' / f'Sheesshh-Skills-{version}.zip').resolve()
     if output.suffix.lower() != '.zip':
         parser.error('--output must name a ZIP file')
     payload = collect()
@@ -140,7 +140,7 @@ def main():
     payload['manifest.json'] = (json.dumps(manifest, indent=2) + '\n').encode('utf-8')
     output.parent.mkdir(parents=True, exist_ok=True)
     # Write a temporary file so failed validation cannot replace an existing package.
-    with tempfile.TemporaryDirectory(prefix='mrmak-skills-build-', dir=output.parent) as staging:
+    with tempfile.TemporaryDirectory(prefix='sheesshh-skills-build-', dir=output.parent) as staging:
         candidate = Path(staging) / output.name
         with zipfile.ZipFile(candidate, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as bundle:
             for name, data in sorted(payload.items()):

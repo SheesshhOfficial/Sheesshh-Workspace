@@ -1,4 +1,4 @@
-# Mr. Mak Workspace on macOS
+# Sheesshh Workspace on macOS
 
 The desktop app was built for Windows (and Linux). This document covers the macOS port:
 what changed, how to build and run it, how it was verified, and what is still open.
@@ -17,18 +17,18 @@ Prerequisites: Node.js 22.20+, [Rust](https://rustup.rs), Xcode Command Line Too
 
 ```bash
 ./setup.sh check      # report prerequisites
-./setup.sh desktop    # npm ci + build Mr. Mak Workspace.app and a .dmg
+./setup.sh desktop    # npm ci + build Sheesshh Workspace.app and a .dmg
 ./setup.sh preview    # optional: browser-only report preview, no Rust or Xcode needed
 ```
 
-Output: `src-tauri/target/release/bundle/macos/Mr. Mak Workspace.app` (and `bundle/dmg/`).
-Copy the app to Applications and double-click **Start Mr. Mak.command** in the repository,
+Output: `src-tauri/target/release/bundle/macos/Sheesshh Workspace.app` (and `bundle/dmg/`).
+Copy the app to Applications and double-click **Start Sheesshh.command** in the repository,
 which opens the app on this repository. The launcher warns when the build folder holds a
 newer app than Applications and prints the replace command. The build is signed ad hoc
 (`signingIdentity "-"`, no hardened runtime) and sealed, but not notarised. A copy you
 build yourself opens without a Gatekeeper prompt. A downloaded copy may be blocked: use
 System Settings › Privacy & Security › Open Anyway, or, if macOS calls it damaged, run
-`xattr -dr com.apple.quarantine "/Applications/Mr. Mak Workspace.app"` once. macOS asks
+`xattr -dr com.apple.quarantine "/Applications/Sheesshh Workspace.app"` once. macOS asks
 again for permissions (e.g. microphone) after each rebuild, because an ad-hoc signature
 changes with every build. Image and report downloads go to `~/Downloads` and are selected
 in Finder. To update, follow the
@@ -97,8 +97,8 @@ Development: `./node_modules/.bin/tauri dev -- -- --repo "$PWD"`. Without `--rep
   in IndexedDB as bytes, not Blobs (Safari Private Browsing).
 
 ### Scripts
-`setup.sh` (macOS/Linux counterpart of `Setup.ps1`), `Start Mr. Mak.command`
-(counterpart of `Start Mr. Mak.cmd`), `scripts/check-macos-native.sh`.
+`setup.sh` (macOS/Linux counterpart of `Setup.ps1`), `Start Sheesshh.command`
+(counterpart of `Start Sheesshh.cmd`), `scripts/check-macos-native.sh`.
 
 ## Verification
 
@@ -113,7 +113,7 @@ Development: `./node_modules/.bin/tauri dev -- -- --repo "$PWD"`. Without `--rep
 | Manual, still to run after the 0.5.1 fixes | — | On a Retina display, drop a file onto the top ~100 px of a Chats terminal (it must attach) and onto the History or voice overlay (it must not); press Download in the image lightbox (the file must appear in `~/Downloads`); Show in Finder on a `.app` folder selects it instead of launching it |
 
 The UI tests now run in the engine of each platform's app (WebView2/Edge on Windows,
-WKWebView/WebKit on macOS); `MRMAK_TEST_BROWSER=chromium|webkit|msedge` overrides.
+WKWebView/WebKit on macOS); `SHEESSHH_TEST_BROWSER=chromium|webkit|msedge` overrides.
 Run `npx playwright install webkit` once after `npm ci` (as the macOS CI job does) before
 `npm run desktop:test:ui`, `npm run test:preview` or the template UI check; `chromium`
 needs `npx playwright install chromium`. Several tests needed engine-aware fixes (platform

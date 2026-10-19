@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, mkdir, readFile, writeFile, readdir } from 'node:fs/promises';
+import { mkdtemp, mkdir, readFile, writeFile, readdir, stat, chmod } from 'node:fs/promises';
 import path from 'node:path';
 import { Files } from '../files.mjs';
 import { NativeSettings } from '../native-settings.mjs';
@@ -15,8 +15,8 @@ test('Markdown saves preserve Unicode, keep a recovery copy, and reject stale or
   const changed = await files.saveMarkdown({ path: file, text: '# New notes\n\n**Текст** 🐽\n', revision: preview.revision });
   assert.match(changed.text, /\*\*Текст\*\* 🐽/);
   assert.notEqual(preview.revision, changed.revision);
-  const backups = await readdir(path.join(repo, '.mrmak/markdown-backups'));
-  assert.equal(await readFile(path.join(repo, '.mrmak/markdown-backups', backups.find(name => name.endsWith('.md'))), 'utf8'), preview.text);
+  const backups = await readdir(path.join(repo, '.sheesshh/markdown-backups'));
+  assert.equal(await readFile(path.join(repo, '.sheesshh/markdown-backups', backups.find(name => name.endsWith('.md'))), 'utf8'), preview.text);
   await assert.rejects(files.saveMarkdown({ path: file, text: 'stale', revision: preview.revision }), /changed on disk/);
   assert.equal(await readFile(file, 'utf8'), changed.text);
   const racing = await Promise.allSettled(['first', 'second'].map(text => files.saveMarkdown({ path: file, text, revision: changed.revision })));
@@ -25,6 +25,22 @@ test('Markdown saves preserve Unicode, keep a recovery copy, and reject stale or
   await assert.rejects(files.saveMarkdown({ path: path.join(repo, 'script.js'), text: 'changed', revision: changed.revision }), /Markdown/);
   await assert.rejects(files.saveMarkdown({ path: file, text: 'a'.repeat(2 * 1024 * 1024 + 1), revision: changed.revision }), /2 MB/);
   assert.equal(await readFile(path.join(repo, 'script.js'), 'utf8'), 'original');
+});
+
+test('Markdown replacement preserves source permissions and creates private recovery copies', { skip: process.platform === 'win32' }, async () => {
+  const repo = await mkdtemp(path.resolve('.cache/markdown-permissions-'));
+  const file = path.join(repo, 'private.md'), files = new Files(repo);
+  await writeFile(file, 'Private fixture notes', { mode: 0o600 });
+  const permissions = async target => (await stat(target)).mode & 0o777;
+  for (const mode of [0o600, 0o640, 0o664]) {
+    await chmod(file, mode);
+    const preview = await files.preview(file);
+    await files.saveMarkdown({ path: file, text: `Updated fixture ${mode}`, revision: preview.revision });
+    assert.equal(await permissions(file), mode, 'Atomic replacement retains the original permissions, independent of umask');
+  }
+  const backups = path.join(repo, '.sheesshh', 'markdown-backups');
+  assert.equal(await permissions(backups), 0o700);
+  for (const name of await readdir(backups)) assert.equal(await permissions(path.join(backups, name)), 0o600, name);
 });
 
 test('Main folders expose local Claude and Codex skills alongside knowledge and processes', async () => {
