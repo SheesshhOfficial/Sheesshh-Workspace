@@ -1,0 +1,68 @@
+{
+  "assets": [
+    {
+      "file": "runner-canyon.png",
+      "original_filename": "game-1.png",
+      "width": 1246,
+      "height": 670,
+      "sha256": "931c0d5b50237d1797800e27b46fd59cc5ceb8439c78ba81ea0fa170fac25f3d",
+      "pixel_edits": false,
+      "progress_date": "2026-10-19",
+      "date_basis": "Owner-supplied progress session, not file modification timestamp",
+      "source": "Owner-provided SnipersAim Unity session capture",
+      "credit": "SheesshhOfficial/SnipersAim project; third-party asset rights remain with their respective creators"
+    },
+    {
+      "file": "tower-platform-reference.png",
+      "original_filename": "game-2.png",
+      "width": 1208,
+      "height": 615,
+      "sha256": "c56fa12d04e0af61269c47421e82458bfa7619ee93d019f91348b720ac27d824",
+      "pixel_edits": false,
+      "progress_date": "2026-10-19",
+      "date_basis": "Owner-supplied progress session, not file modification timestamp",
+      "source": "Owner-provided SnipersAim Unity session capture",
+      "credit": "SheesshhOfficial/SnipersAim project; third-party asset rights remain with their respective creators"
+    },
+    {
+      "file": "hero-interior-reference.png",
+      "original_filename": "marker.png",
+      "width": 1188,
+      "height": 808,
+      "sha256": "fb15a94a49d44cc6bd6ef16565401cd7ccbf8d4f24b3845a760e601562be4aec",
+      "pixel_edits": false,
+      "progress_date": "2026-10-19",
+      "date_basis": "Owner-supplied progress session, not file modification timestamp",
+      "source": "Owner-provided SnipersAim Unity session capture",
+      "credit": "SheesshhOfficial/SnipersAim project; third-party asset rights remain with their respective creators"
+    },
+    {
+      "file": "kestrel-art-blender.png",
+      "original_filename": "kestrel_art_BLENDER_NOT_UNITY.png",
+      "source_project_path": "WorkInProgress/Previews/kestrel_art_BLENDER_NOT_UNITY.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "832ce33f473c146189895a8403d8250db4fa00de747d125c3d40f9ca1559519d",
+      "pixel_edits": false,
+      "progress_date": "2026-10-19",
+      "date_basis": "Prepared toolkit progress report",
+      "source": "Blender render of original same-source rifle geometry authored for SnipersAim",
+      "credit": "Original project-authored Kestrel rifle and held presentation",
+      "evidence_scope": "Blender art preview only; not Unity-native output or gameplay proof"
+    },
+    {
+      "file": "kestrel-first-person-blender.png",
+      "original_filename": "kestrel_first_person_BLENDER_NOT_UNITY.png",
+      "source_project_path": "WorkInProgress/Previews/kestrel_first_person_BLENDER_NOT_UNITY.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "d8860780a2432e26066f84a48ffc0c06ea489d6544ebfab7767002cb6bfa73be",
+      "pixel_edits": false,
+      "progress_date": "2026-10-19",
+      "date_basis": "Prepared toolkit progress report",
+      "source": "Blender render of original same-source rifle geometry authored for SnipersAim",
+      "credit": "Original project-authored Kestrel rifle and held presentation",
+      "evidence_scope": "Blender art preview only; not Unity-native output or gameplay proof"
+    }
+  ]
+}

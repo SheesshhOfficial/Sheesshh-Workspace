@@ -1,0 +1,16 @@
+/* SnipersAim reading layout; colors inherit the shared Workspace theme. */
+.project-hero{padding:clamp(18px,3vw,32px);border:1px solid var(--mak-border);margin-bottom:22px}
+.project-hero .lead{margin:0 0 20px;max-width:66ch}
+.project-meta{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13px;color:var(--mak-muted)}
+.project-hero img,.evidence img{display:block;width:100%;height:auto;border-radius:8px;margin-top:20px}
+figcaption{font-size:13px;color:var(--mak-muted);padding:12px 0 4px;line-height:1.65}
+.project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.project-grid .mak-card{margin:0}.project-grid h2{font-size:20px}
+.project-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:24px 0}
+.project-stats>div{padding:18px;border:1px solid var(--mak-border);border-radius:10px;background:var(--mak-surface)}
+.project-stats strong{display:block;font-size:22px;line-height:1.35}.project-stats span{font-size:13px;color:var(--mak-muted)}
+.evidence{padding:clamp(16px,3vw,26px);border:1px solid var(--mak-border);margin:24px 0}
+.evidence h2{margin-top:0}.evidence p{margin-bottom:0}.evidence img{margin-top:14px}
+.project-links{display:flex;gap:12px 22px;flex-wrap:wrap;margin:16px 0}
+.project-tag{font-size:12px;color:var(--mak-muted);border:1px solid var(--mak-border);border-radius:5px;padding:4px 8px;display:inline-block}
+@media(max-width:680px){.project-grid,.project-stats{grid-template-columns:1fr}.project-stats>div{padding:14px}.project-stats strong{font-size:20px}}
