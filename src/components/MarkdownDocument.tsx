@@ -52,6 +52,6 @@ export default function MarkdownDocument({ file }: { file: Preview }) {
       {dirty && <button disabled={busy} onClick={() => { setDraft(saved); setStatus('Draft discarded') }}>Discard</button>}
       <button className="document-save" disabled={!dirty || busy} onClick={() => void save()}>Save</button>
     </div>
-    {editing ? <textarea className="markdown-editor" aria-label={`Edit ${file.name}`} spellCheck={false} value={draft} onChange={event => { setDraft(event.target.value); setStatus('') }} onKeyDown={event => { if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 's') { event.preventDefault(); void save() } }} /> : <div className="markdown-reader"><MarkdownView text={draft} baseUrl={file.url} /></div>}
+    {editing ? <textarea className="markdown-editor" aria-label={`Edit ${file.name}`} spellCheck={false} value={draft} onChange={event => { setDraft(event.target.value); setStatus('') }} onKeyDown={event => { if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 's') { event.preventDefault(); void save() } }} /> : <div className="markdown-reader" tabIndex={0} role="region" aria-label={file.name}><MarkdownView text={draft} baseUrl={file.url} /></div>}
   </section>
 }

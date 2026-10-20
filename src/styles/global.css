@@ -366,6 +366,7 @@ button:focus-visible {
 .main {
   flex: 1;
   min-width: 0;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -430,7 +431,10 @@ button:focus-visible {
 
 .step-tabs {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  min-width: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
   gap: 2px;
   padding: 2px;
   background: var(--surface-1);
@@ -438,7 +442,7 @@ button:focus-visible {
   border-radius: var(--radius);
   max-width: 100%;
 }
-.step-tabs::-webkit-scrollbar { display: none; }
+.step-tabs::-webkit-scrollbar { height: 8px; }
 .app-layout:not([data-entity="my-dream-game"]) .topbar:has(.step-tabs){align-items:flex-start;gap:10px 20px}
 .app-layout:not([data-entity="my-dream-game"]) .topbar:has(.step-tabs) .breadcrumb{width:100%;min-height:24px}
 .app-layout:not([data-entity="my-dream-game"]) .topbar:has(.step-tabs) .topbar-right{width:100%;margin:0;align-items:flex-start}
@@ -447,6 +451,7 @@ button:focus-visible {
 .app-layout:not([data-entity="my-dream-game"]) .step-tab.active{border-color:#f0a0b036;color:#f7bbca;background:#f0a0b012}
 
 .step-tab {
+  flex: 0 0 auto;
   padding: 4px 12px;
   border: none;
   background: none;
@@ -472,6 +477,7 @@ button:focus-visible {
 }
 
 .open-ext {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -494,10 +500,17 @@ button:focus-visible {
 /* ─── Content / report iframe ─── */
 .content {
   flex: 1;
+  min-height: 0;
+  min-width: 0;
   position: relative;
   overflow: hidden;
   background: #101115;
 }
+
+/* Browser Markdown is a direct child, unlike the native document wrapper.
+   Give its scrollport the panel height instead of clipping an auto-height reader. */
+.content > .markdown-reader { height: 100%; width: 100%; }
+.content > .report-error { height: 100%; overflow: auto; display: block; }
 
 .report-document { position: relative; height: 100%; min-height: 0; background: #101115; }
 .report-error { padding: 32px; max-width: 760px; line-height: 1.7; }

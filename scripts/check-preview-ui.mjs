@@ -50,6 +50,58 @@ try {
   }
   assert.deepEqual(errors, []);
 
+  // Regression: every long project tab must own a bounded, reachable scrollport.
+  const project = entities.find(entity => entity.id === 'snipersaim');
+  assert.ok(project, 'SnipersAim scroll fixture exists');
+  for (const viewport of [{ width: 1280, height: 720 }, { width: 390, height: 600 }]) {
+    await page.setViewportSize(viewport);
+    await page.goto(`${url}#/${project.id}/${project.steps.length - 1}`);
+    await page.locator('.mak-markdown h1').waitFor();
+    await page.waitForFunction(() => {
+      const strip = document.querySelector('.step-tabs').getBoundingClientRect();
+      const selected = document.querySelector('.step-tab[aria-selected=true]').getBoundingClientRect();
+      return selected.left >= strip.left - 1 && selected.right <= strip.right + 1;
+    });
+    await page.goto(`${url}#/${project.id}/0`);
+    for (const [index, step] of project.steps.entries()) {
+      await page.locator('.step-tab').nth(index).click();
+      const content = page.locator('.content');
+      assert.ok((await content.boundingBox()).height > 100, 'tabs leave room for content');
+      if (/\.md$/i.test(step.path)) {
+        const reader = page.locator('.content > .markdown-reader');
+        await reader.locator('h1').waitFor();
+        assert.equal(await reader.evaluate(node => node.scrollTop), 0, 'new tab starts at top');
+        await reader.focus();
+        await page.keyboard.press('End');
+        await page.waitForFunction(() => document.querySelector('.content > .markdown-reader')?.scrollTop > 0);
+        await reader.evaluate(node => { node.scrollTop = 0; });
+        const dimensions = await reader.evaluate(node => ({ height: node.clientHeight, full: node.scrollHeight, bottom: node.getBoundingClientRect().bottom }));
+        assert.ok(dimensions.bottom <= viewport.height + 1, `${step.name}: bounded reader`);
+        assert.ok(dimensions.full > dimensions.height, `${step.name}: long content fixture`);
+        await reader.hover();
+        await page.mouse.wheel(0, 10000);
+        await page.waitForFunction(() => document.querySelector('.content > .markdown-reader')?.scrollTop > 0);
+        await reader.evaluate(node => { node.scrollTop = node.scrollHeight; });
+        assert.ok(await reader.evaluate(node => node.scrollTop + node.clientHeight >= node.scrollHeight - 2), `${step.name}: bottom reachable`);
+        // The table must scroll inside the document, not widen/clamp the app.
+        assert.ok(await content.evaluate(node => node.scrollWidth <= node.clientWidth + 1));
+      } else {
+        await page.locator('.report-document[aria-busy=false]').waitFor();
+        const frame = page.frameLocator('iframe.report-frame');
+        await frame.locator('h1').first().waitFor();
+        assert.ok(await frame.locator('body').evaluate(() => {
+          const scroller = document.scrollingElement;
+          scroller.scrollTop = scroller.scrollHeight;
+          return scroller.scrollHeight > scroller.clientHeight && scroller.scrollTop > 0;
+        }), `${step.name}: iframe scrolls`);
+      }
+    }
+    if (viewport.width < 500) {
+      assert.ok(await page.locator('.step-tabs').evaluate(node => node.scrollWidth > node.clientWidth && node.scrollLeft > 0), 'last tab reachable horizontally');
+    }
+  }
+  await page.setViewportSize({ width: 1280, height: 720 });
+
   // Exercise Markdown images as well as links against a root-relative document.
   const mdEntity = entities.find(entity => entity.steps.some(step => /\.md$/i.test(step.path)));
   const mdIndex = mdEntity.steps.findIndex(step => /\.md$/i.test(step.path));

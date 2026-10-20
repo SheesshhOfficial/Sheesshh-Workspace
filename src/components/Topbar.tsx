@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import type { WorkspaceEntity } from '../types'
 import { isDesktop } from '../desktop/client'
 import BrowserSettings from './BrowserSettings'
@@ -12,6 +13,11 @@ interface TopbarProps {
 }
 
 export default function Topbar({ entity, stepIndex, onStep, onHome, reportUrl }: TopbarProps) {
+  const tabs = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    tabs.current?.querySelector('[aria-selected="true"]')?.scrollIntoView({ block: 'nearest', inline: 'nearest' })
+  }, [entity?.id, stepIndex])
+
   return (
     <div className="topbar">
       <nav className="breadcrumb" aria-label="Breadcrumb">
@@ -31,7 +37,7 @@ export default function Topbar({ entity, stepIndex, onStep, onHome, reportUrl }:
       {entity && (
         <div className="topbar-right">
           {entity.steps.length > 0 && (
-            <div className="step-tabs" role="tablist">
+            <div className="step-tabs" role="tablist" ref={tabs}>
               {entity.steps.map((s, i) => (
                 <button
                   key={i}
