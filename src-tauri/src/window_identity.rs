@@ -31,7 +31,7 @@ fn icon_path(app: &tauri::AppHandle, label: &str) -> Result<PathBuf, Box<dyn std
     let mut hash = std::collections::hash_map::DefaultHasher::new(); bytes.hash(&mut hash);
     let folder = app.path().app_cache_dir()?.join("icons");
     fs::create_dir_all(&folder)?;
-    let path = folder.join(format!("mak-{label}-{:016x}.ico", hash.finish()));
+    let path = folder.join(format!("sheesshh-{label}-{:016x}.ico", hash.finish()));
     if fs::read(&path).ok().as_deref() != Some(bytes) { fs::write(&path, bytes)?; }
     Ok(path)
 }

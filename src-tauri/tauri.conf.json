@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "Sheesshh Workspace",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "identifier": "io.github.sheesshhofficial.workspace",
   "build": {
     "beforeBuildCommand": "npm run desktop:prepare",
@@ -38,13 +38,16 @@
       },
       "nsis": {
         "installMode": "currentUser",
-        "displayLanguageSelector": false
+        "displayLanguageSelector": false,
+        "installerIcon": "icons/icon.ico"
       }
     },
     "macOS": {
       "minimumSystemVersion": "11.0",
       "signingIdentity": "-",
       "hardenedRuntime": false
-    }
+    },
+    "publisher": "SheesshhOfficial",
+    "shortDescription": "Sheesshh personal workspace and agent chats"
   }
 }

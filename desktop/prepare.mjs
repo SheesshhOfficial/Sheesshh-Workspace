@@ -66,7 +66,7 @@ async function portableNode() {
   const binary = path.join(cache, name, 'bin', 'node');
   if (await access(binary).then(() => true, () => false)) return binary;
   const base = `https://nodejs.org/dist/${process.version}`;
-  console.warn(`[mak] ${process.execPath} is not self-contained (links ${linked?.find(file => !systemLibrary(file)) || 'unknown libraries'}); downloading ${name} from nodejs.org`);
+  console.warn(`[sheesshh] ${process.execPath} is not self-contained (links ${linked?.find(file => !systemLibrary(file)) || 'unknown libraries'}); downloading ${name} from nodejs.org`);
   const sums = await (await fetch(`${base}/SHASUMS256.txt`)).text();
   const expected = sums.split('\n').find(line => line.endsWith(`  ${name}.tar.gz`))?.split(/\s+/)[0];
   if (!expected) throw new Error(`nodejs.org lists no ${name}.tar.gz`);
@@ -92,8 +92,8 @@ if (process.platform === 'darwin') {
   // SHEESSHH_MACOS_MINIMUM is set by setup.sh when it raises minimumSystemVersion with --config.
   const minos = minimumMacos(bundledNode), declared = process.env.SHEESSHH_MACOS_MINIMUM || await declaredMacos();
   if (minos && newerMacos(minos, declared)) {
-    console.warn(`\n[mak] WARNING: the bundled Node ${process.version} requires macOS ${minos}, but the app declares macOS ${declared}.`);
-    console.warn(`[mak] On older macOS versions the app opens but its service cannot start. Build with Node 22, or use ./setup.sh desktop, which raises the declared minimum.\n`);
+    console.warn(`\n[sheesshh] WARNING: the bundled Node ${process.version} requires macOS ${minos}, but the app declares macOS ${declared}.`);
+    console.warn(`[sheesshh] On older macOS versions the app opens but its service cannot start. Build with Node 22, or use ./setup.sh desktop, which raises the declared minimum.\n`);
   }
 }
 await mkdir(path.join(runtime, 'service'), { recursive: true });
@@ -130,4 +130,7 @@ if (!license) {
   license = await response.text();
 }
 await writeFile(path.join(runtime, 'NODE-LICENSE.txt'), license);
+for (const name of ['LICENSE', 'THIRD_PARTY_NOTICES.md']) {
+  await cp(path.join(repo, name), path.join(runtime, name));
+}
 console.log('Desktop runtime prepared: Node, native terminals and production UI.');

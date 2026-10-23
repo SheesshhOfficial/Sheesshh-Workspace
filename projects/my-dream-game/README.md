@@ -1,6 +1,6 @@
-# My Dream Game: Mr. Mak 64
+# My Dream Game: Sheesshh 64
 
-A small third-person platformer set on floating Sky Islands. Mr. Mak is a white
+A small third-person platformer set on floating Sky Islands. Sheesshh is a white
 piglet with a grey beanie and a brown backpack. The first world is a climb through
 grass islands and a small village, with a secret below the main route.
 

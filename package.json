@@ -1,7 +1,7 @@
 {
   "name": "sheesshh-workspace",
   "private": true,
-  "version": "0.5.2",
+  "version": "0.5.3",
   "type": "module",
   "scripts": {
     "postinstall": "npm --prefix desktop/service ci && node scripts/fix-pty-permissions.mjs",
@@ -22,7 +22,9 @@
     "test:template": "node scripts/check-template.mjs && node scripts/sync-skills.mjs --check && npm run test:assets",
     "test:assets": "node --test scripts/asset-delivery/test/*.test.mjs",
     "skills:sync": "node scripts/sync-skills.mjs",
-    "skills:pack": "node scripts/run-python.mjs scripts/package_skills.py"
+    "skills:pack": "node scripts/run-python.mjs scripts/package_skills.py",
+    "test:branding": "node scripts/check-branding.mjs",
+    "icons:generate": "node scripts/generate-sheesshh-icons.mjs"
   },
   "dependencies": {
     "@types/three": "^0.185.4",

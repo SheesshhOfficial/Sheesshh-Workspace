@@ -297,7 +297,7 @@ fn move_to_trash(path: &str) -> Result<(), trash::Error> {
 }
 
 // macOS menu-bar extras are template images that follow the menu bar's look.
-// The icon's light snout becomes the glyph and its dark nostrils become holes;
+// The basketball's light lettering and seams become the template glyph;
 // the 128 px source stays sharp on Retina.
 #[cfg(target_os = "macos")]
 fn menu_bar_icon() -> tauri::Result<tauri::image::Image<'static>> {
@@ -558,12 +558,13 @@ mod tests {
 
     #[cfg(target_os = "macos")]
     #[test]
-    fn menu_bar_icon_is_a_sharp_mask_with_holes() {
+    fn menu_bar_icon_is_a_nonempty_basketball_mask() {
         let icon = super::menu_bar_icon().unwrap();
         assert_eq!((icon.width(), icon.height()), (128, 128));
         let alpha: Vec<u8> = icon.rgba().chunks_exact(4).map(|pixel| pixel[3]).collect();
-        // Opaque between the nostrils, cut out inside the left nostril.
-        assert_eq!((alpha[64 * 128 + 64], alpha[64 * 128 + 44]), (255, 0));
+        // The basketball silhouette must retain both visible detail and transparency.
+        assert!(alpha.iter().any(|&a| a > 0));
+        assert!(alpha.iter().any(|&a| a == 0));
     }
 
     #[test]

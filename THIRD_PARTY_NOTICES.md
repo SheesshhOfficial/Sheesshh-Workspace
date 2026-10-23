@@ -22,3 +22,6 @@ Third-party components retain their own licenses.
 
 This is an independent community project, not an official product of the
 listed providers.
+
+The Sheesshh 64 starter card is a personalized adaptation of the included
+Mr. Mak 64 sample. Original sample artwork and provenance remain credited above.

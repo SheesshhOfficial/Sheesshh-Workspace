@@ -1,0 +1,41 @@
+name: Build Sheesshh basketball installer
+on:
+  push:
+    branches: ['build/sheesshh-basketball-0.5.3']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: sheesshh-windows-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+        with:
+          node-version: '22'
+          package-manager-cache: false
+      - uses: dtolnay/rust-toolchain@e2a55d2ffb04f378e9626c28d38b36d230d1e12f
+        with:
+          toolchain: stable
+      - run: npm ci
+      - run: npm run test:branding
+      - run: npm run lint
+      - run: npm test
+      - run: npm run test:template
+      - name: Build Windows NSIS installer from this exact commit
+        run: npm exec -- tauri build --ci --bundles nsis
+      - name: Inspect package, version, attribution and source basketball
+        shell: pwsh
+        run: ./scripts/verify-windows-package.ps1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: Sheesshh-Workspace-v0.5.3-windows-x64
+          path: release-assets/
+          if-no-files-found: error
+          retention-days: 14
