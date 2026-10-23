@@ -293,7 +293,7 @@ and account configuration private.
 
 ## Optional voice and connections
 
-You can work entirely through the CLI chats. The floating nose adds an optional
+You can work entirely through the CLI chats. The floating Sheesshh mark adds an optional
 voice assistant: OpenAI Live supplies the voice connection over API, and the
 coordinator uses your signed-in Codex CLI. Voice API usage is billed separately
 from a CLI subscription. The coordinator uses your Codex model configuration

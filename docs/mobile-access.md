@@ -250,7 +250,7 @@ Returning from phone sleep immediately replaces the stale connection without
 reloading the app. The current view, selected chat, draft and scroll position stay
 in place. Online and restored-page events use the same recovery; old bootstrap
 replies are ignored, connection attempts have a deadline, and failed attempts
-retry while the app is visible. The nose button reconnects in place as well.
+retry while the app is visible. The Sheesshh button reconnects in place as well.
 
 Recorded local videos linked explicitly in Conversation (MP4, WebM, MOV or M4V)
 appear as video cards. Tap to open a separate player with playback controls,

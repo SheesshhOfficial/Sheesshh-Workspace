@@ -77,7 +77,7 @@ subscription, running terminal, API balance or signed-in application.
 
 ## Talking to Sheesshh
 
-Press the nose button to start or stop a voice conversation. Ask for quick actions
+Press the Sheesshh button to start or stop a voice conversation. Ask for quick actions
 such as opening a chat, finding a card, checking recent work or changing a card's
 status. For a larger task, ask Sheesshh to create an agent conversation and follow
 its result. You can continue working directly in any terminal.

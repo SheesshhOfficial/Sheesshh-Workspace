@@ -11,9 +11,10 @@ export function AgentLogo({ agent, size = 18 }: { agent: AgentId; size?: number 
   return <Icon name="terminal" size={size} />
 }
 
-export function Nose({ size = 30, tone = 'pink' }: { size?: number; tone?: 'pink' | 'black' }) {
+export function SheesshhMark({ size = 30, tone = 'black' }: { size?: number; tone?: 'pink' | 'black' }) {
   return <MakLogo size={size} tone={tone} />
 }
+export const Nose = SheesshhMark
 export function Icon({ name, size = 18, style }: { name: string; size?: number; style?: CSSProperties }) {
   const paths: Record<string, string> = {
     menu: 'M4 6h16M4 12h16M4 18h16',

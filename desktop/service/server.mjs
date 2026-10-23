@@ -406,7 +406,7 @@ export async function createService({ repo, uiDir, stateDir, token = secret(), n
           if (typeof data.sdp !== 'string' || !data.sdp.trim() || typeof data.clientId !== 'string') throw new Error('A microphone connection is required');
           const keys = parseEnv(await readFile(path.join(repo, '.env'), 'utf8').catch(() => ''));
           const key = keys.OPENAI_API_KEY || keys.OPENAI_KEY || process.env.OPENAI_API_KEY;
-          if (!key) throw new Error('Add OPENAI_API_KEY to the repository .env, then press the nose again.');
+          if (!key) throw new Error('Add OPENAI_API_KEY to the repository .env, then press Sheesshh again.');
           voiceOwner = { clientId: data.clientId, surface: data.surface === 'chats' ? 'chats' : 'workspace' };
           broadcast('voice-owner', { owner: voiceOwner });
           try {
