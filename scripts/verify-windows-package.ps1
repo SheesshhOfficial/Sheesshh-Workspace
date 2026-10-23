@@ -34,11 +34,13 @@ if (-not ($files | Where-Object Name -eq 'THIRD_PARTY_NOTICES.md')) { throw 'Thi
 if (-not ($files | Where-Object Name -eq 'NODE-LICENSE.txt')) { throw 'Node license missing.' }
 $bundled = @($files | Where-Object Name -eq 'sheesshh-workspace.exe')
 if ($bundled.Count -ne 1) { throw 'Expected one packaged Sheesshh executable.' }
-if ((Get-FileHash $binary).Hash -ne (Get-FileHash $bundled[0].FullName).Hash) { throw 'Packaged executable differs from the verified build.' }
+node scripts/verify-nsis-binary.mjs $binary $bundled[0].FullName
+if ($LASTEXITCODE -ne 0) { throw 'Packaged executable byte verification failed.' }
+$info = $bundled[0].VersionInfo
 $mark = @($files | Where-Object Name -eq 'sheesshh-mark.png')
 if ($mark.Count -lt 1 -or (Get-FileHash $mark[0].FullName).Hash -ne (Get-FileHash 'public/assets/sheesshh-mark.png').Hash) { throw 'Packaged basketball mark does not match source.' }
 Add-Type -AssemblyName System.Drawing
-$icon = [System.Drawing.Icon]::ExtractAssociatedIcon((Resolve-Path $binary))
+$icon = [System.Drawing.Icon]::ExtractAssociatedIcon($bundled[0].FullName)
 if ($null -eq $icon) { throw 'No embedded application icon.' }
 $bitmap = $icon.ToBitmap()
 $bitmap.Save((Join-Path $stage 'embedded-app-icon.png'), [System.Drawing.Imaging.ImageFormat]::Png)
@@ -51,6 +53,7 @@ $hash = (Get-FileHash (Join-Path $stage $name) -Algorithm SHA256).Hash.ToLowerIn
   productName = $info.ProductName; companyName = $info.CompanyName;
   authenticodeStatus = $signature.Status.ToString();
   archiveInspection = 'PASS'; sourceBasketballMatch = 'PASS'; licenseInspection = 'PASS';
+  executableByteComparison = 'PASS (only documented Tauri UNK to NSS marker patch)';
   nativeInstallAndLaunch = 'NOT_RUN'; signing = 'No signing certificate configured or changed'
 } | ConvertTo-Json | Set-Content (Join-Path $stage 'build-provenance.json')
 Get-Content (Join-Path $stage 'build-provenance.json')
