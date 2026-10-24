@@ -39,6 +39,16 @@ if ($LASTEXITCODE -ne 0) { throw 'Packaged executable byte verification failed.'
 $info = $bundled[0].VersionInfo
 $mark = @($files | Where-Object Name -eq 'sheesshh-mark.png')
 if ($mark.Count -lt 1 -or (Get-FileHash $mark[0].FullName).Hash -ne (Get-FileHash 'public/assets/sheesshh-mark.png').Hash) { throw 'Packaged basketball mark does not match source.' }
+# Verify every pinned ECC catalog/provenance/content file survived packaging.
+$catalogs = @($files | Where-Object { $_.Name -eq 'catalog.json' -and $_.Directory.Name -eq 'ecc' })
+if ($catalogs.Count -ne 1) { throw 'Expected one packaged ECC catalog.' }
+$eccRoot = $catalogs[0].Directory.FullName
+$sourceEcc = (Resolve-Path 'public/ecc').Path
+foreach ($entry in Get-ChildItem $sourceEcc -Recurse -File) {
+  $relative = [System.IO.Path]::GetRelativePath($sourceEcc, $entry.FullName)
+  $target = Join-Path $eccRoot $relative
+  if (-not (Test-Path $target) -or (Get-FileHash $target).Hash -ne (Get-FileHash $entry.FullName).Hash) { throw "ECC packaged file differs: $relative" }
+}
 Add-Type -AssemblyName System.Drawing
 $icon = [System.Drawing.Icon]::ExtractAssociatedIcon($bundled[0].FullName)
 if ($null -eq $icon) { throw 'No embedded application icon.' }
@@ -52,7 +62,7 @@ $hash = (Get-FileHash (Join-Path $stage $name) -Algorithm SHA256).Hash.ToLowerIn
   commit = $env:GITHUB_SHA; version = $version; installer = $name; sha256 = $hash;
   productName = $info.ProductName; companyName = $info.CompanyName;
   authenticodeStatus = $signature.Status.ToString();
-  archiveInspection = 'PASS'; sourceBasketballMatch = 'PASS'; licenseInspection = 'PASS';
+  eccCatalogMatch = 'PASS'; archiveInspection = 'PASS'; sourceBasketballMatch = 'PASS'; licenseInspection = 'PASS';
   executableByteComparison = 'PASS (only documented Tauri UNK to NSS marker patch)';
   nativeInstallAndLaunch = 'NOT_RUN'; signing = 'No signing certificate configured or changed'
 } | ConvertTo-Json | Set-Content (Join-Path $stage 'build-provenance.json')

@@ -112,6 +112,8 @@ if (process.platform === 'darwin') {
   }
 }
 await cp(path.join(repo, 'dist'), path.join(runtime, 'ui'), { recursive: true });
+// ECC is a pinned declarative catalog, not an executable plugin or workspace copy.
+await cp(path.join(repo, 'public', 'ecc'), path.join(runtime, 'ui', 'ecc'), { recursive: true });
 // Vite deliberately does not copy the enormous workspace junction. Bundle only UI assets.
 try { await access(path.join(repo, 'public', 'assets')); await cp(path.join(repo, 'public', 'assets'), path.join(runtime, 'ui', 'assets'), { recursive: true }); } catch { /* Optional brand assets. */ }
 await writeFile(path.join(runtime, 'README.txt'), `Sheesshh local runtime for ${process.platform}. User repositories, keys and CLI logins are not included.\n`);

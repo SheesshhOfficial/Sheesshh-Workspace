@@ -17,6 +17,7 @@ export function SheesshhMark({ size = 30, tone = 'black' }: { size?: number; ton
 export const Nose = SheesshhMark
 export function Icon({ name, size = 18, style }: { name: string; size?: number; style?: CSSProperties }) {
   const paths: Record<string, string> = {
+    ecc: 'M3 4h7v7H3ZM14 4h7v7h-7ZM3 15h7v7H3ZM14 15h7v7h-7Z',
     menu: 'M4 6h16M4 12h16M4 18h16',
     phone: 'M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2ZM10 5h4M11 19h2',
     help: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20ZM9.1 8a3 3 0 0 1 5.8 1c0 2-3 2-3 4M12 17h.01',

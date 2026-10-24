@@ -1,6 +1,6 @@
 [package]
 name = "sheesshh-workspace"
-version = "0.5.3"
+version = "0.5.4"
 description = "Sheesshh workspace and independent agent terminals"
 authors = ["SheesshhOfficial", "Mr. Mak Workspace contributors"]
 edition = "2021"

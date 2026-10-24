@@ -25,3 +25,11 @@ listed providers.
 
 The Sheesshh 64 starter card is a personalized adaptation of the included
 Mr. Mak 64 sample. Original sample artwork and provenance remain credited above.
+
+## ECC instruction snapshot
+
+The optional on-demand instruction library includes MIT-licensed documentation
+from affaan-m/ECC, pinned to 90606c8315ee09cafc303515c5f33024db6b9882.
+Copyright (c) 2026 Affaan Mustafa. The full upstream license and provenance
+are bundled in `public/ecc/LICENSE` and `public/ecc/provenance.json` (packaged
+under the runtime UI ecc folder). No upstream executable companions are installed.

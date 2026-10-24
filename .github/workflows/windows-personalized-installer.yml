@@ -1,7 +1,7 @@
-name: Build Sheesshh basketball installer
+name: Build Sheesshh ECC basketball installer
 on:
   push:
-    branches: ['build/sheesshh-basketball-0.5.3']
+    branches: ['main']
   workflow_dispatch:
 permissions:
   contents: read
@@ -25,17 +25,23 @@ jobs:
           toolchain: stable
       - run: npm ci
       - run: npm run test:branding
+      - run: npm run test:ecc
       - run: npm run lint
       - run: npm test
       - run: npm run test:template
       - name: Build Windows NSIS installer from this exact commit
         run: npm exec -- tauri build --ci --bundles nsis
+      - name: Verify ECC UI with isolated fake agents
+        run: npm run test:ecc:ui
       - name: Inspect package, version, attribution and source basketball
         shell: pwsh
         run: ./scripts/verify-windows-package.ps1
+      - name: Include isolated UI evidence
+        shell: pwsh
+        run: Copy-Item .cache/ecc-*.png release-assets/
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
-          name: Sheesshh-Workspace-v0.5.3-windows-x64
+          name: Sheesshh-Workspace-v0.5.4-windows-x64
           path: release-assets/
           if-no-files-found: error
           retention-days: 14

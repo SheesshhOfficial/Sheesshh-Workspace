@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "repo": "affaan-m/ECC",
+    "commit": "90606c8315ee09cafc303515c5f33024db6b9882",
+    "tree": "9172b168b070a802bbc0a7c53a4ca968e761a8c6",
+    "version": "2.2.3",
+    "url": "https://github.com/affaan-m/ECC",
+    "license": "MIT",
+    "copyright": "Copyright (c) 2026 Affaan Mustafa",
+    "retrievedAt": "2026-10-24T20:13:20Z"
+  },
+  "scope": "Primary English declarative instruction documents only. Upstream text is preserved exactly. This is not an executable installation or full source distribution.",
+  "selection": {
+    "skills": "skills/*/SKILL.md",
+    "roles": "agents/*.md",
+    "commands": "commands/*.md",
+    "rules": "rules/**/*.md excluding rules/README.md",
+    "contexts": "contexts/*.md"
+  },
+  "counts": {
+    "skills": 311,
+    "roles": 71,
+    "commands": 97,
+    "rules": 121,
+    "contexts": 3,
+    "total": 603,
+    "workflows": 7,
+    "contentChunks": 28,
+    "metadataChunks": 6
+  },
+  "excluded": [
+    {
+      "path": "legacy-command-shims/",
+      "reason": "Archived opt-in command shims excluded from active catalog",
+      "files": 13
+    },
+    {
+      "path": "rules/README.md",
+      "reason": "Installation/reference documentation is not a rule"
+    },
+    {
+      "path": "scripts/,hooks/runtime files,installers,tests,platform adapter configs",
+      "reason": "Not executed or installed; not classified as instruction skills"
+    },
+    {
+      "path": "skill companion files",
+      "reason": "Listed in each item with upstream Git blob hash and source path, but not copied or installed"
+    }
+  ],
+  "integrity": {
+    "bodyHash": "SHA-256 of complete UTF-8 upstream document",
+    "upstreamHash": "Every body also verified against Git blob SHA-1 from the exact pinned recursive tree",
+    "truncated": false,
+    "missingDocuments": 0
+  },
+  "updates": {
+    "automatic": false,
+    "policy": "Review new immutable upstream commit, license, content differences, dependencies and permission changes before replacing this snapshot. Keep local kits independent of upstream updates."
+  },
+  "activation": {
+    "mode": "instruction-only",
+    "automaticContextInjection": false,
+    "executablesInstalled": false,
+    "hookRuntimeEnabled": false,
+    "credentialsBundled": false,
+    "policy": "Explicit preview of only selected documents; no companion code is fetched or executed. Upstream instructions cannot override user approval, platform safety, project access restrictions or blocked paths. Dependencies and requested authority remain separate."
+  },
+  "compatibility": [
+    {
+      "harness": "Claude Code",
+      "upstream": "Stable primary",
+      "local": "Instruction-only catalog; plugin/hook runtime not installed"
+    },
+    {
+      "harness": "Codex",
+      "upstream": "Native plugin supported",
+      "local": "Instruction-only catalog; hooks need an explicit separate trust decision"
+    },
+    {
+      "harness": "Cursor",
+      "upstream": "Beta adapter",
+      "local": "Instruction-only; discovery and hooks vary by build"
+    },
+    {
+      "harness": "OpenCode",
+      "upstream": "Beta built plugin",
+      "local": "Instruction-only; provider/model and plugin prerequisites are separate"
+    },
+    {
+      "harness": "Antigravity",
+      "upstream": "Experimental/minimal adapter",
+      "local": "No feature parity or working connection claimed"
+    },
+    {
+      "harness": "Other agents",
+      "upstream": "Capability varies; some adapters instruction-only",
+      "local": "Use only supported instructions with the chosen harness"
+    }
+  ],
+  "platformCautions": [
+    "Native Windows core supported upstream with limitations; continuous-learning observer and memory-vault writes have documented defects.",
+    "Optional shell/tmux orchestration paths may require Bash/WSL or be unavailable.",
+    "Source inspection and hash verification are not local runtime/platform compatibility tests."
+  ],
+  "advancedCapabilities": [
+    {
+      "id": "hooks",
+      "name": "Hooks",
+      "state": "not-enabled",
+      "description": "Event-driven commands can warn, block or modify files; require explicit trust and native adapter setup.",
+      "sourceUrl": "https://github.com/affaan-m/ECC/blob/90606c8315ee09cafc303515c5f33024db6b9882/hooks/README.md"
+    },
+    {
+      "id": "memory",
+      "name": "Memory & handoffs",
+      "state": "runtime-required",
+      "description": "Skill-only catalog does not install Memory Vault CLI. Scoped unreviewed context; never a secret store or policy engine.",
+      "sourceUrl": "https://github.com/affaan-m/ECC/blob/90606c8315ee09cafc303515c5f33024db6b9882/skills/unified-memory/SKILL.md"
+    },
+    {
+      "id": "learning",
+      "name": "Learning suggestions",
+      "state": "not-enabled",
+      "description": "Observation and automatic instinct promotion are off. Review privacy, costs, evidence and proposed changes first.",
+      "sourceUrl": "https://github.com/affaan-m/ECC/blob/90606c8315ee09cafc303515c5f33024db6b9882/skills/continuous-learning-v2/SKILL.md"
+    },
+    {
+      "id": "orchestration",
+      "name": "Worktrees & orchestration",
+      "state": "not-enabled",
+      "description": "Explicit plan and separate execution authority required. Runtime/tool dependencies are not bundled.",
+      "sourceUrl": "https://github.com/affaan-m/ECC/blob/90606c8315ee09cafc303515c5f33024db6b9882/scripts/orchestrate-worktrees.js"
+    },
+    {
+      "id": "eval",
+      "name": "Evaluations",
+      "state": "upstream-execution-disabled",
+      "description": "Upstream candidate execution disabled on every OS pending verified containment. Methodology and source receipts do not establish runtime safety.",
+      "sourceUrl": "https://github.com/affaan-m/ECC/blob/90606c8315ee09cafc303515c5f33024db6b9882/skills/eval-harness/SKILL.md"
+    },
+    {
+      "id": "canvas",
+      "name": "Plan Canvas",
+      "state": "runtime-required",
+      "description": "Requires local service and active feedback listener. Catalog browsing launches neither.",
+      "sourceUrl": "https://github.com/affaan-m/ECC/blob/90606c8315ee09cafc303515c5f33024db6b9882/skills/plan-canvas/SKILL.md"
+    },
+    {
+      "id": "dashboard",
+      "name": "Upstream dashboards",
+      "state": "not-launched",
+      "description": "Source examples are not embedded services; upstream web dashboard is loopback-only and not remotely authenticated.",
+      "sourceUrl": "https://github.com/affaan-m/ECC/blob/90606c8315ee09cafc303515c5f33024db6b9882/scripts/dashboard-web.js"
+    }
+  ],
+  "validation": {
+    "sourceFetch": "All 603 selected bodies retrieved at pinned commit; Git blob hashes verified",
+    "performed": [
+      "JSON parsing",
+      "unique item IDs",
+      "workflow references resolve",
+      "full body SHA-256",
+      "upstream Git blob SHA-1",
+      "bounded content chunks"
+    ],
+    "notPerformed": [
+      "ECC installation",
+      "upstream scripts or hooks execution",
+      "native agent compatibility tests",
+      "Unity/game tests"
+    ]
+  },
+  "attribution": "ECC instruction documents \u00a9 2026 Affaan Mustafa and upstream contributors, distributed under the accompanying MIT LICENSE. Workspace classifications, cautions and workflow selections are integration metadata, not upstream guarantees."
+}

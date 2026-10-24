@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { api, uploadImage, transcribeDesktopAudio } from './client'
+import { api, uploadImage, transcribeDesktopAudio, surface } from './client'
 import { Icon } from './Icons'
 import { ZoomImage } from '../components/ImagePreview'
 import type { Preview } from './types'
@@ -42,6 +42,13 @@ export default function MakComposer({ connected, sending, onSend }: {
   async function send(event: React.FormEvent) {
     event.preventDefault()
     if (disabled || voiceBusy || busy.current || (!draft.trim() && !images.length)) return
+    const eccCommand = /^\/ecc(?:\s+([\s\S]*))?$/i.exec(draft.trim())
+    if (eccCommand) {
+      if (surface !== 'workspace') { setError('Open the Workspace conversation to use /ecc, or choose ECC in its right rail.'); return }
+      if (images.length) { setError('Remove attachments before opening ECC. Your draft is preserved.'); return }
+      window.dispatchEvent(new CustomEvent('sheesshh-ecc-open', { detail: { task: eccCommand[1] || '' } }))
+      setDraft(''); return
+    }
     busy.current = true; setError('')
     try {
       await onSend(draft.trim() || 'Please review the attached images.', images.map(image => image.path))

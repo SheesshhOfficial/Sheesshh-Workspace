@@ -1,7 +1,7 @@
 {
   "name": "sheesshh-local-service",
   "private": true,
-  "version": "0.5.2",
+  "version": "0.5.4",
   "type": "module",
   "engines": {
     "node": ">=22.6"
