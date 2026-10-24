@@ -1,3 +1,5 @@
+> Historical design specification · 19 October 2026. Preserved as design context, not a current task list. See [Overview](overview.html) and [Test matrix](test-matrix.md) for later accepted canyon/LAN progress and the separate pending Yard check. Game development is paused; this document does not dispatch work.
+
 # SnipersAim game design
 
 Target design and acceptance criteria, recorded 19 October 2026. This specification describes the intended game; it is not a claim that every rule has passed native or multiplayer testing.

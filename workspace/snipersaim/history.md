@@ -1,3 +1,11 @@
+# Current context · 24 October 2026
+
+The sections below are the preserved **19–20 October historical record**. Their words “latest”, “next” and “pending” describe that earlier session, not today's task list. Current status is in [Overview](overview.html), [Runbook](runbook.md) and [Test matrix](test-matrix.md).
+
+Since that record, the owner accepted the balanced canyon layout, grass, rifle and runner fixes, reported the invisible block fixed, and reported successful two-PC multiplayer on the same Wi-Fi. Last Train Yard was added as a separate arena; its generated scene/audit are committed at `cc17356`. Its later manual Practice Runner check is still pending. Game development is paused; no regeneration or mandatory multiplayer-certification loop is requested.
+
+---
+
 # SnipersAim workflow and history
 
 A chronological development record for the 19 October 2026 working session, updated with toolkit publication on 20 October 2026. These revision anchors describe the reported progression; they are not a replacement for each commit's full diff. No wall-clock times are inferred from screenshot filenames or file timestamps.

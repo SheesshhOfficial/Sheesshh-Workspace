@@ -22,11 +22,11 @@
     {
       "id": "snipersaim",
       "title": "SnipersAim",
-      "description": "Canyon sniper-versus-runners game: design, development history, next steps, test evidence and progress screenshots.",
+      "description": "Paused game project: accepted canyon and LAN progress, separate Last Train Yard setup evidence, and one saved next Unity check.",
       "type": "group",
       "category": "project",
       "created": "2026-10-19",
-      "updated": "2026-10-20",
+      "updated": "2026-10-24",
       "folder": "snipersaim",
       "steps": [
         {
