@@ -21,12 +21,12 @@
     },
     {
       "id": "vopa-learning-game",
-      "title": "VOPA Learning Game",
-      "description": "Interactive, immersive learning for Classes 1\u20135: five concepts to discuss, seven annotated reference screens and an earlier prototype record.",
+      "title": "Cat Cloud Delivery (CCD)",
+      "description": "Planning an animated portrait learning adventure: Cloud City, five deliveries, twelve concept images and an honest animation/asset checklist.",
       "type": "group",
       "category": "project",
       "created": "2026-10-25",
-      "updated": "2026-10-25",
+      "updated": "2026-10-26",
       "folder": "vopa-learning-game",
       "steps": [
         {
@@ -34,19 +34,31 @@
           "path": "overview.html"
         },
         {
-          "name": "Reference Images",
-          "path": "references.html"
-        },
-        {
-          "name": "Ideas & Design",
+          "name": "Game Design",
           "path": "game-plan.html"
         },
         {
-          "name": "Taskboard",
+          "name": "Concept Gallery",
+          "path": "concepts.html"
+        },
+        {
+          "name": "Animation & Assets",
+          "path": "animation-assets.html"
+        },
+        {
+          "name": "Status & Decisions",
           "path": "taskboard.html"
         },
         {
-          "name": "Prototype & Tests",
+          "name": "Original References",
+          "path": "references.html"
+        },
+        {
+          "name": "Ideas History",
+          "path": "ideas-history.html"
+        },
+        {
+          "name": "Earlier Prototype",
           "path": "runbook.html"
         }
       ],

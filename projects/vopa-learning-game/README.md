@@ -1,30 +1,19 @@
-# VOPA Learning Game
+# Cat Cloud Delivery (CCD)
 
-## Confirmed direction
+Current phase: planning and visual exploration, explicitly not a playable game build. Overall audience Classes 1–5; first slice Class 1. Original project, not an official VOPA product.
 
-Interactive and immersive learning games with good visuals for Classes 1–5. Current phase is discussion: compare ideas by game function, progression and workflow. No concept, final theme, fixed game list, language or platform has been selected. This is an original project, not an official VOPA product or a claim of affiliation.
+## Confirmed
 
-## Workspace record
+Portrait vertical themed-city map, lively layered 2D, Cloud City first with five floating-island houses, a cat in a tiny airship travelling automatically after tapping a house, mixed animal customers, English narration alongside text/replay, three to five questions using each house’s activity, gentle hints/retry without lives, fixed sequential route, envelope popup/hearts on delivery, fresh practice preserving delivered status.
 
-- [Overview](../../workspace/vopa-learning-game/overview.html)
-- [Reference Images](../../workspace/vopa-learning-game/references.html)
-- [Ideas & Design](../../workspace/vopa-learning-game/game-plan.html)
-- [Taskboard](../../workspace/vopa-learning-game/taskboard.html)
-- [Earlier Prototype & Tests](../../workspace/vopa-learning-game/runbook.html)
-- [Reference manifest](../../workspace/vopa-learning-game/references.json)
+Accepted activities: Number Line, Missing Number, Count Birds/Flying Math, Shape Match, Picture–Word Match and Add/Subtract. Birds enter then settle and remain visible/countable. Combining Number Line and Missing Number into one house, exact route order, the kitten/rabbit/squirrel/hedgehog/owl/bear cast and exactly three questions are proposals.
 
-## Concepts being compared
+## Workspace
 
-Living Village, Lost Island Expedition, Little Inventors Workshop Story Explorers and PAWS & PATHS. PAWS & PATHS is the latest cat-focused idea: an original kitten helps friends by manipulating the world, beginning with a proposed bridge mission. It is not selected. A village with exploration and one shop mission is a discussion recommendation, not an owner selection. Content examples by class must be validated against the actual syllabus. Build one learning interaction well before expanding to a full world or Classes 1–5 curriculum.
+[Overview](../../workspace/vopa-learning-game/overview.html), [Game Design](../../workspace/vopa-learning-game/game-plan.html), [Concept Gallery](../../workspace/vopa-learning-game/concepts.html), [Animation & Assets](../../workspace/vopa-learning-game/animation-assets.html), [Status & Decisions](../../workspace/vopa-learning-game/taskboard.html), [Original References](../../workspace/vopa-learning-game/references.html), [Ideas History](../../workspace/vopa-learning-game/ideas-history.html), [Earlier Prototype](../../workspace/vopa-learning-game/runbook.html).
 
-## Earlier exploratory prototype
+Twelve generated concept images are available. Home/settings concepts and separate animation-art generation stopped at the generation usage limit and remain unproduced. Concepts are not production sprites, rig parts, animation frames, gameplay screenshots or proof of working UI. Future text/buttons must be runtime UI. Rigs, loops, CCD implementation and native/device tests are NOT RUN / not created.
 
-LearningGarden source starter delivered 24 October 2026: Count Apples, Find Shapes and Memory Pairs, original art/audio, gentle feedback and local anonymous visit counters. Its former narrower age assumption is superseded. Earlier preparation passed 72 package/source checks; Unity compilation, Play mode, native core checks and device builds remain unverified. English-only. This prototype does not constrain the final concept.
+## Preservation
 
-## Scope and references
-
-This update organizes the project and annotates seven user-supplied Tarang/VOPA screenshots. No game source, SnipersAim or ECC changes. Originals are byte-preserving copies in `workspace/vopa-learning-game/assets/references/`. The manifest records original filenames, SHA-256 and observations/adaptations/cautions. Screenshots are reference material, not licensed production art; no creator or reuse license is asserted. Do not copy browser chrome, profile identity or unknown control semantics into the game.
-
-## Next decision
-
-Choose the game experience and one mission, then define class/learning goal, interaction, feedback, progression, language and target device before authorizing implementation.
+The original seven Tarang/VOPA screenshots remain byte-for-byte unchanged. Previous brainstorming and LearningGarden exploratory prototype remain historical. No SnipersAim, ECC or application-code changes.
