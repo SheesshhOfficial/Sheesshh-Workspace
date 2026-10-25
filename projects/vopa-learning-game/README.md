@@ -4,7 +4,7 @@ Current phase: planning and visual exploration, explicitly not a playable game b
 
 ## Confirmed
 
-Portrait vertical themed-city map, lively layered 2D, Cloud City first with five floating-island houses, a cat in a tiny airship travelling automatically after tapping a house, mixed animal customers, English narration alongside text/replay, three to five questions using each house’s activity, gentle hints/retry without lives, fixed sequential route, envelope popup/hearts on delivery, fresh practice preserving delivered status.
+Portrait vertical themed-city map, lively layered 2D, Cloud City first with five floating-island houses, a cat in a tiny airship travelling automatically after tapping a house, mixed animal customers, English narration alongside text/replay, three to five questions using each house’s activity, gentle hints/retry without lives, fixed sequential route, envelope popup/hearts on delivery, fresh practice preserving delivered status. After every completed house, the courier travels onward with animation. Every house must be an individual asset; each house’s animal customer must be an individual animated asset. Timing relative to the popup or Continue is unspecified. This note is a design requirement, not implementation authorization.
 
 Accepted activities: Number Line, Missing Number, Count Birds/Flying Math, Shape Match, Picture–Word Match and Add/Subtract. Birds enter then settle and remain visible/countable. Combining Number Line and Missing Number into one house, exact route order, the kitten/rabbit/squirrel/hedgehog/owl/bear cast and exactly three questions are proposals.
 
