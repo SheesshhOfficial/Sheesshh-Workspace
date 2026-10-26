@@ -22,7 +22,7 @@
     {
       "id": "vopa-learning-game",
       "title": "Cat Cloud Delivery (CCD)",
-      "description": "Planning an animated portrait learning adventure: Cloud City, five deliveries, twelve concept images and an honest animation/asset checklist.",
+      "description": "Planning an animated portrait learning adventure: twelve concepts, ten uploaded asset drafts with individual reviews, and an animation production checklist.",
       "type": "group",
       "category": "project",
       "created": "2026-10-25",
@@ -44,6 +44,10 @@
         {
           "name": "Animation & Assets",
           "path": "animation-assets.html"
+        },
+        {
+          "name": "Uploaded Asset Review",
+          "path": "uploaded-assets.html"
         },
         {
           "name": "Status & Decisions",

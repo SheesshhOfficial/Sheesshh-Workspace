@@ -1,0 +1,298 @@
+{
+  "reviewed_at_utc": "2026-10-26",
+  "scope": "Read-only inspection of all ten original uploaded PNGs; no image editing or animation performed.",
+  "summary": "All ten PNGs are RGBA but fully opaque (alpha 255–255, zero transparent or partial-alpha pixels). Nine cutout/part sheets have baked checkerboards; the opaque sky is appropriate as a background. All are preserved unchanged as drafts, not production-ready rigs or sprites.",
+  "images": [
+    {
+      "mode": "RGBA",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "transparent_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "sha256": "51b741957c93d866a21f923c821774aac0da32ef639fc7553fe6642877dfdfa9",
+      "asset_type": "Courier kitten — neutral full-body draft",
+      "prompt_number": "01",
+      "visible_content": "Cream-and-caramel kitten with green eyes, dark ear tips, teal envelope-badge cap, blue scarf and brown mail satchel. Full silhouette, no goggles.",
+      "status": "Draft — transparency cleanup required",
+      "blockers": [
+        "Gray checkerboard is baked into opaque pixels, not transparency.",
+        "Single flattened pose; no separate motion parts or animation frames.",
+        "White four-point star mark at bottom right.",
+        "Compared with concept 01, the tail is larger and fluffier and body taller; identity details broadly match, but silhouette approval is still needed."
+      ],
+      "next_steps": [
+        "Keep as identity reference; obtain true-alpha cutout with clean fur/whisker edges.",
+        "Confirm silhouette, then use separate aligned parts/frames for motion."
+      ],
+      "original_filename": "1.png",
+      "bytes": 5972808,
+      "width": 2048,
+      "height": 2048,
+      "file": "assets/uploaded-drafts/1.png"
+    },
+    {
+      "mode": "RGBA",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "transparent_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "sha256": "bf632bdbcf3baa103711d8eb30958bef1f045ad2f4ebf5a03f283c264d319f2b",
+      "asset_type": "Courier kitten — exploded part-layout draft",
+      "prompt_number": "02",
+      "visible_content": "Head with cap, torso, two whole arms/paws, two whole legs/feet, tail, scarf pieces and satchel/strap arranged separately on one image.",
+      "status": "Draft — incomplete rig-source breakdown",
+      "blockers": [
+        "Opaque baked checkerboard.",
+        "Upper/lower arms and upper/lower legs are not independently split as requested; hands and feet remain attached to whole limbs.",
+        "This PNG is a single flattened sheet, not editable layers, a rig, or animation.",
+        "Joint coverage, common scale and alignment have not been assembly-tested.",
+        "White four-point star mark at bottom right."
+      ],
+      "next_steps": [
+        "Obtain true-alpha individual parts and finish the missing limb segmentation.",
+        "Test overlap coverage, pivots and rest-pose reconstruction before building a rig."
+      ],
+      "original_filename": "2.png",
+      "bytes": 4565102,
+      "width": 2048,
+      "height": 2048,
+      "file": "assets/uploaded-drafts/2.png"
+    },
+    {
+      "mode": "RGBA",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "transparent_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "sha256": "9136fa215faa3a91588230d3970e82fa1058f8dd9aef3610ef3a8f98a84dc659",
+      "asset_type": "Courier kitten — six expression studies",
+      "prompt_number": "03",
+      "visible_content": "Three-by-two sheet of capped kitten heads with scarf collars: neutral, closed eyes, small open smile, worried look, sidelong smile and delighted laugh.",
+      "status": "Draft — unregistered expression sheet",
+      "blockers": [
+        "Opaque baked checkerboard.",
+        "Head, ear, cap and nose positioning varies between expressions; these are not verified registered swaps.",
+        "Bottom-left expression reads worried rather than a neutral thoughtful glance; review for gentle non-shaming feedback.",
+        "White four-point star mark at bottom right."
+      ],
+      "next_steps": [
+        "Export six true-alpha heads to identical cells with a shared nose/neck anchor.",
+        "Align silhouette and costume before testing expression swaps; choose or revise the thoughtful expression."
+      ],
+      "original_filename": "3.png",
+      "bytes": 4095534,
+      "width": 2048,
+      "height": 1373,
+      "file": "assets/uploaded-drafts/3.png"
+    },
+    {
+      "mode": "RGBA",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "transparent_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "sha256": "9a1b1635184efaaecdd46bbb370ec887bba48f4c627bf107209605b0d553ab24",
+      "asset_type": "Rabbit customer — part layout and three expression studies",
+      "prompt_number": "08",
+      "visible_content": "White rabbit with pink inner ears, teal eyes, teal overalls and cream shirt: main head with ears attached, torso, paired whole arms, paired whole legs/feet, separate tail tuft and three lower expression heads (neutral, friendly smile, delighted).",
+      "status": "Draft — incomplete motion-ready part separation",
+      "blockers": [
+        "Opaque baked checkerboard; no true transparent or soft-alpha edge pixels.",
+        "Flattened layout, not individual layers, a rig or animation; upper/lower limb sections are not independently separated for jointed animation.",
+        "Ears remain attached to each head; independent ear motion needs separate art.",
+        "Tail tuft is supplied separately but another tuft remains baked into the torso; assembly must avoid duplicate tail appearance.",
+        "Expression head anchors/scale and joint overlap coverage have not been assembly-tested.",
+        "White four-point star mark at bottom right."
+      ],
+      "next_steps": [
+        "Obtain true-alpha individual parts with clean white-fur edges.",
+        "Separate ears and any limb joints needed for planned motion; reconcile attached/separate tail.",
+        "Align the three expression heads and test rest-pose assembly before rigging."
+      ],
+      "original_filename": "8.png",
+      "bytes": 5741434,
+      "width": 2048,
+      "height": 2048,
+      "file": "assets/uploaded-drafts/8.png"
+    },
+    {
+      "mode": "RGBA",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "transparent_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "sha256": "371afd41590eb1d8c3d157bf4c54aacf102935c1cecf349d1f79608d57a8f453",
+      "asset_type": "Number Line cottage — independent building draft",
+      "prompt_number": "17",
+      "visible_content": "Cream timber cottage, teal roof, chimney, arched wooden door, envelope mailbox, flowers and attached timber dock. No animal, island or neighboring building.",
+      "status": "Draft — building source, not animated",
+      "blockers": [
+        "Opaque baked checkerboard.",
+        "Door, shutters and foliage are baked into the building; no opening/sway layers supplied.",
+        "Shutters are shown open despite the prompt requesting a closed base state.",
+        "White four-point star mark at bottom right."
+      ],
+      "next_steps": [
+        "Obtain true-alpha building export and separate door/shutter/foliage parts for planned animation.",
+        "Test dock and foundation fit with island 37; confirm desired shutter base state."
+      ],
+      "original_filename": "17.png",
+      "bytes": 6118150,
+      "width": 2048,
+      "height": 2048,
+      "file": "assets/uploaded-drafts/17.png"
+    },
+    {
+      "mode": "RGBA",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "transparent_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "sha256": "86371a1b4ca6cedea444615a8ed57fdb20722bed01ad6aac5b05dd259a0d5f8c",
+      "asset_type": "Tiny mail airship — complete vehicle draft",
+      "prompt_number": "27",
+      "visible_content": "Unpiloted teal-and-cream elongated balloon, rope rigging, wood gondola, empty cockpit, mail crate, teal pennant and rear propeller.",
+      "status": "Draft — vehicle reference, not motion-ready",
+      "blockers": [
+        "Opaque baked checkerboard.",
+        "Single flattened vehicle; propeller, pennant, cockpit rim and balloon are not separated.",
+        "Painted propeller motion streaks are static marks, not actual animation.",
+        "Balloon is more elongated than canonical concept 01, and bow/cockpit faces left rather than the prompt's requested right.",
+        "White four-point star mark at bottom right."
+      ],
+      "next_steps": [
+        "Confirm vehicle silhouette/direction against concept 01 before creating matching cockpit overlay.",
+        "Obtain true-alpha vehicle and separate clean propeller, flag and foreground cockpit rim for animation."
+      ],
+      "original_filename": "27.png",
+      "bytes": 4396563,
+      "width": 2048,
+      "height": 1529,
+      "file": "assets/uploaded-drafts/27.png"
+    },
+    {
+      "mode": "RGBA",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "transparent_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "sha256": "b380d09803175d8a6564c7764a68c366549a5a5cefc9b043b9c81f7fe40d9803",
+      "asset_type": "Portrait sky background",
+      "prompt_number": "33",
+      "visible_content": "Soft painterly blue sky fading to pale warm cream at the bottom, with very quiet wispy edge clouds and ample empty space.",
+      "status": "Usable background draft — opacity is appropriate",
+      "blockers": [
+        "White four-point star mark at bottom right remains in the artwork.",
+        "Actual canvas is 1143 × 2048; cropping/scaling and long-route scrolling or tiling have not been tested."
+      ],
+      "next_steps": [
+        "Keep background opaque; transparency is not required here.",
+        "Request a clean final source and test portrait safe areas/route scrolling before production acceptance."
+      ],
+      "original_filename": "33.png",
+      "bytes": 3543479,
+      "width": 1143,
+      "height": 2048,
+      "file": "assets/uploaded-drafts/33.png"
+    },
+    {
+      "mode": "RGBA",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "transparent_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "sha256": "604215131748fdf6d61b91b501e4541e64cebb1489b93df63d007a712c72f35e",
+      "asset_type": "Far-distance cloud bank",
+      "prompt_number": "34",
+      "visible_content": "Broad blue-white painterly cloud bank with warm highlights, lower central valley and soft wispy edges.",
+      "status": "Draft — true soft alpha required",
+      "blockers": [
+        "Dark gray checkerboard is baked throughout the image and its wispy cloud edges.",
+        "There are zero partially transparent pixels despite the translucent-looking edge treatment.",
+        "White four-point star mark at bottom right."
+      ],
+      "next_steps": [
+        "Obtain true-alpha cloud export, preserving smooth partial transparency in wisps.",
+        "Test against both light and dark backgrounds before parallax use; avoid simply deleting checker colors."
+      ],
+      "original_filename": "34.png",
+      "bytes": 2788923,
+      "width": 2048,
+      "height": 1012,
+      "file": "assets/uploaded-drafts/34.png"
+    },
+    {
+      "mode": "RGBA",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "transparent_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "sha256": "f801640d2c299ab8c3a9b85abf989111b1794df9607425aae63f0e1d818c1c63",
+      "asset_type": "Empty floating house-island base",
+      "prompt_number": "37",
+      "visible_content": "Oval grassy rock island with tapered underside, flowers and bushes at rim, rear bare cottage placement area and path toward the front. No house or animal.",
+      "status": "Draft — compositing source, not assembled map tile",
+      "blockers": [
+        "Opaque baked checkerboard.",
+        "House/island perspective, foundation scale and dock alignment have not been composited and verified.",
+        "White four-point star mark at bottom right."
+      ],
+      "next_steps": [
+        "Obtain true-alpha island export with complete rock/grass edges.",
+        "Test cottage 17 on the bare zone, leaving customer and docking clearance."
+      ],
+      "original_filename": "37.png",
+      "bytes": 6283758,
+      "width": 2048,
+      "height": 2048,
+      "file": "assets/uploaded-drafts/37.png"
+    },
+    {
+      "mode": "RGBA",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "transparent_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "sha256": "72d6e1df4daee53c1b92243b53cf882a182c30786cc6da572664a511cacec534",
+      "asset_type": "Mail popup — three envelope states",
+      "prompt_number": "41",
+      "visible_content": "Three cream envelopes in a horizontal row: sealed with red wax, opened with letter emerging, and smiling delivered envelope.",
+      "status": "Draft — unsliced opaque state sheet",
+      "blockers": [
+        "Dark gray checkerboard is baked into opaque pixels.",
+        "States are not independent exported sprites; shared canvas registration and transition timing are not verified.",
+        "No separate heart-particle assets are present in this sheet.",
+        "White four-point star mark at bottom right."
+      ],
+      "next_steps": [
+        "Obtain true-alpha states as separate sprites with consistent envelope size and anchor.",
+        "Use separate hearts/sparkles for the delivery celebration; animate the state transition later."
+      ],
+      "original_filename": "41.png",
+      "bytes": 2318441,
+      "width": 2048,
+      "height": 868,
+      "file": "assets/uploaded-drafts/41.png"
+    }
+  ]
+}

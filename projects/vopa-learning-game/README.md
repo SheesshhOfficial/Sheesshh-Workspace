@@ -10,10 +10,14 @@ Accepted activities: Number Line, Missing Number, Count Birds/Flying Math, Shape
 
 ## Workspace
 
-[Overview](../../workspace/vopa-learning-game/overview.html), [Game Design](../../workspace/vopa-learning-game/game-plan.html), [Concept Gallery](../../workspace/vopa-learning-game/concepts.html), [Animation & Assets](../../workspace/vopa-learning-game/animation-assets.html), [Status & Decisions](../../workspace/vopa-learning-game/taskboard.html), [Original References](../../workspace/vopa-learning-game/references.html), [Ideas History](../../workspace/vopa-learning-game/ideas-history.html), [Earlier Prototype](../../workspace/vopa-learning-game/runbook.html).
+[Overview](../../workspace/vopa-learning-game/overview.html), [Game Design](../../workspace/vopa-learning-game/game-plan.html), [Concept Gallery](../../workspace/vopa-learning-game/concepts.html), [Animation & Assets](../../workspace/vopa-learning-game/animation-assets.html), [Uploaded Asset Review](../../workspace/vopa-learning-game/uploaded-assets.html), [Status & Decisions](../../workspace/vopa-learning-game/taskboard.html), [Original References](../../workspace/vopa-learning-game/references.html), [Ideas History](../../workspace/vopa-learning-game/ideas-history.html), [Earlier Prototype](../../workspace/vopa-learning-game/runbook.html).
 
 Twelve generated concept images are available. Home/settings concepts and separate animation-art generation stopped at the generation usage limit and remain unproduced. Concepts are not production sprites, rig parts, animation frames, gameplay screenshots or proof of working UI. Future text/buttons must be runtime UI. Rigs, loops, CCD implementation and native/device tests are NOT RUN / not created.
 
 ## Preservation
 
 The original seven Tarang/VOPA screenshots remain byte-for-byte unchanged. Previous brainstorming and LearningGarden exploratory prototype remain historical. No SnipersAim, ECC or application-code changes.
+
+## Uploaded asset drafts
+
+Ten user-supplied PNG originals are retained unchanged in `workspace/vopa-learning-game/assets/uploaded-drafts/`, separately from the twelve concepts and seven references. The Uploaded Asset Review tab records per-file visual findings, dimensions, alpha results, original-byte checksums and next steps. Static sheets are not animation-ready merely because they show multiple poses; a background may legitimately be opaque. No image editing, segmentation, rigging or game implementation is included.
