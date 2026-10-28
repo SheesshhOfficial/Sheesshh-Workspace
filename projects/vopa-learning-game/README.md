@@ -1,31 +1,36 @@
-# Cat On Delivery (COD)
+# NIPUN Tarang
 
-Updated 28 October 2026. Original learning-game project; not an official VOPA product.
+Updated 28 October 2026. This is the active replacement direction for the existing VOPA learning-game workspace card. COD pages and media are preserved as historical records, not deleted or silently repurposed.
 
 ## Brief status
 
-COD is now a playable Unity Editor prototype, not planning-only. Current scope: Class 1 English, Cloud City, five houses and three questions per house. Classes 1–5 remain the longer-term goal. Fixed-route airship travel, hints/retry, delivery celebrations, replay safeguards and local progress are implemented.
+Retain the client’s Tarang fort theme. Build editable Unity screens for a portrait browser/WebGL target. English text and spoken explanations are current scope; keyed text/audio support future Marathi settings. Learner age and syllabus remain unconfirmed.
 
-The authored Unity scene is `Assets/COD/Editable/Authoring/CODEditableGame.unity`: twelve persistent screen prefabs plus Shell, with typed presenter bindings rather than runtime layout reconstruction. Stop Play to save designer edits. Keep the legacy scene as rollback; never regenerate over the Authoring directory.
+Home Play selects the earliest unfinished curriculum stage, not the last visited game. Explore shows six sequential forts with only Fort 1 initially unlocked. Fort 1 has eight named sequential game slots; the demo implements MathFly and NumberLineJump while the other six remain locked. No NIPUN implementation or browser-build validation is claimed yet.
 
-## Latest local work and evidence
+## Confirmed rules
 
-Pip has six transparent Greeting frames at 6 fps. Owner Home/Map/Greeting layouts are preserved. Full-city and focused checks completed on 27 October at about 22:04 UTC. A preflight on 28 October at 05:15 UTC confirmed all 18 product files still matched that validated copy by SHA; it did not rerun the tests. Validation passed 111 infrastructure checks and a full-city Editor flow with eleven captures, exit 0, empty errors and a clean source guard. Animation checks covered six-frame advance, reduced-motion stillness, hidden-screen stop and replay reset; other recipients did not receive Pip’s six-frame loop.
+- Four sequential stages per implemented game; three cumulative correct answers per stage.
+- Three lives per attempt. A wrong answer OR ten-second question timeout loses one life and produces a new question; retry resets the current stage attempt, not completed progress.
+- Start the question timer after narration. First-use instructions and Home/gameplay i buttons pause the question timer, not the daily wall clock.
+- MathFly answer buttons move a flapping bird, with no collision penalties; random day/night per attempt. NumberLineJump asks before/after with options.
+- One star per stage, one sticker per completed game; no duplicate replay rewards. All eight games are required for a fort flag, so the two-game demo cannot award it.
+- Single local anonymous profile; a 40-minute wall-clock window from first daily open, local-midnight reset, finish the current question at expiry then block further questions. Backend enforcement is later work.
 
-Private game repository: `SheesshhOfficial/Vopa.LearningGarden`, branch `cod/visual-preview`, last confirmed pushed baseline `1400f1f` (27 October). Latest Pip/layout changes are LOCAL AND UNCOMMITTED. The validation copy being clean does not mean those local changes were pushed. This public repository contains workspace documentation, not the private game source.
+## Source and assets
 
-## Remaining work
+Private game branch `nipun/development` was created from `cod/visual-preview`. The client uploaded `Client Game Assets` containing StartPage, FortPage, Fort1, MathFly reference material/sprite sheets, DayBG/NightBG and a bird MP4. The intended new local clone and asset integration are not yet verified. COD’s eighteen local Pip/layout files remain preserved and unpushed.
 
-379 narration clips are prepared but not integrated or audibly quality-checked. Repeated cottage art and a bear placeholder remain. Editor results do not certify real touch/device behavior, Windows/Android release builds, accessibility or classroom suitability. Client demo prepared; outcome unconfirmed.
+This public update contains descriptive documentation only: no private source, client asset copies, new generated art, screenshots or raw logs.
 
-PC execution uses GPT-6 Luna with low reasoning for minimal pinned jobs/report files; parent planning/code review remains separate. The general `run.bat` background utility is paused, not deployed: Python access denied; dependencies approved but none installed.
+## Delivery and verification
+
+Latest requested target: Sunday, 1 November 2026; show earlier if ready. First prove editable navigation and one narrated MathFly stage, then both games, progress/rewards, daily-window behavior and a real WebGL browser run. A target is not a completion promise. COD’s historical Editor tests do not validate NIPUN gameplay or browser behavior.
 
 ## Workspace
 
-[Brief overview](../../workspace/vopa-learning-game/overview.html) · [Game & Architecture](../../workspace/vopa-learning-game/game-plan.html) · [Edit & Run Guide](../../workspace/vopa-learning-game/implementation.html) · [Art & Animation](../../workspace/vopa-learning-game/animation-assets.html) · [Status & Evidence](../../workspace/vopa-learning-game/taskboard.html)
+[Brief overview](../../workspace/vopa-learning-game/nipun-overview.html) · [Detailed game plan](../../workspace/vopa-learning-game/nipun-design.html) · [Delivery and acceptance](../../workspace/vopa-learning-game/nipun-delivery.html)
 
-[Historical concepts](../../workspace/vopa-learning-game/concepts.html) · [Original draft reviews](../../workspace/vopa-learning-game/uploaded-assets.html) · [Original references](../../workspace/vopa-learning-game/references.html) · [Ideas history](../../workspace/vopa-learning-game/ideas-history.html) · [Earlier prototype](../../workspace/vopa-learning-game/runbook.html)
+[Historical COD overview](../../workspace/vopa-learning-game/overview.html) · [Historical COD architecture](../../workspace/vopa-learning-game/game-plan.html) · [Historical COD editing guide](../../workspace/vopa-learning-game/implementation.html) · [Historical COD evidence](../../workspace/vopa-learning-game/taskboard.html) · [Original references](../../workspace/vopa-learning-game/references.html)
 
-## Preservation
-
-All twelve concept images, ten uploaded draft originals, seven reference screenshots and gallery data are unchanged. Historical reviews still apply to their exact originals, not later production derivatives. This update adds no media, raw logs, private usernames or game-source files and does not change other projects or ECC.
+All existing media and gallery JSON remain unchanged; unrelated projects and ECC are untouched. The prior COD README snapshot is retained in `COD-HISTORY.md`.

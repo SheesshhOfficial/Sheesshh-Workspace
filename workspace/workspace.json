@@ -21,8 +21,8 @@
     },
     {
       "id": "vopa-learning-game",
-      "title": "Cat On Delivery (COD)",
-      "description": "Playable Class 1 Unity prototype with editable screens, five learning activities, local Pip animation progress, and clear validation/release status.",
+      "title": "NIPUN Tarang",
+      "description": "Fort-themed Unity/WebGL learning demo: MathFly and NumberLineJump plan, editable screens, narration, stage progression and daily-limit acceptance criteria.",
       "type": "group",
       "category": "project",
       "created": "2026-10-25",
@@ -30,15 +30,27 @@
       "folder": "vopa-learning-game",
       "steps": [
         {
-          "name": "Overview",
+          "name": "NIPUN Overview",
+          "path": "nipun-overview.html"
+        },
+        {
+          "name": "NIPUN Game Plan",
+          "path": "nipun-design.html"
+        },
+        {
+          "name": "Delivery & Acceptance",
+          "path": "nipun-delivery.html"
+        },
+        {
+          "name": "COD \u00b7 Overview (historical)",
           "path": "overview.html"
         },
         {
-          "name": "Game & Architecture",
+          "name": "COD \u00b7 Architecture (historical)",
           "path": "game-plan.html"
         },
         {
-          "name": "Edit & Run Guide",
+          "name": "COD \u00b7 Editing Guide (historical)",
           "path": "implementation.html"
         },
         {
@@ -46,7 +58,7 @@
           "path": "concepts.html"
         },
         {
-          "name": "Art & Animation",
+          "name": "COD \u00b7 Art (historical)",
           "path": "animation-assets.html"
         },
         {
@@ -54,7 +66,7 @@
           "path": "uploaded-assets.html"
         },
         {
-          "name": "Status & Evidence",
+          "name": "COD \u00b7 Evidence (historical)",
           "path": "taskboard.html"
         },
         {
