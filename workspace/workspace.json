@@ -21,12 +21,12 @@
     },
     {
       "id": "vopa-learning-game",
-      "title": "Cat Cloud Delivery (CCD)",
-      "description": "Planning an animated portrait learning adventure: twelve concepts, ten uploaded asset drafts with individual reviews, and an animation production checklist.",
+      "title": "Cat On Delivery (COD)",
+      "description": "Playable Class 1 Unity prototype with editable screens, five learning activities, local Pip animation progress, and clear validation/release status.",
       "type": "group",
       "category": "project",
       "created": "2026-10-25",
-      "updated": "2026-10-26",
+      "updated": "2026-10-28",
       "folder": "vopa-learning-game",
       "steps": [
         {
@@ -34,23 +34,27 @@
           "path": "overview.html"
         },
         {
-          "name": "Game Design",
+          "name": "Game & Architecture",
           "path": "game-plan.html"
         },
         {
-          "name": "Concept Gallery",
+          "name": "Edit & Run Guide",
+          "path": "implementation.html"
+        },
+        {
+          "name": "Historical Concepts",
           "path": "concepts.html"
         },
         {
-          "name": "Animation & Assets",
+          "name": "Art & Animation",
           "path": "animation-assets.html"
         },
         {
-          "name": "Uploaded Asset Review",
+          "name": "Original Draft Review",
           "path": "uploaded-assets.html"
         },
         {
-          "name": "Status & Decisions",
+          "name": "Status & Evidence",
           "path": "taskboard.html"
         },
         {

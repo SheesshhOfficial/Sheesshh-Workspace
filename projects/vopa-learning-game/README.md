@@ -1,23 +1,31 @@
-# Cat Cloud Delivery (CCD)
+# Cat On Delivery (COD)
 
-Current phase: planning and visual exploration, explicitly not a playable game build. Overall audience Classes 1–5; first slice Class 1. Original project, not an official VOPA product.
+Updated 28 October 2026. Original learning-game project; not an official VOPA product.
 
-## Confirmed
+## Brief status
 
-Portrait vertical themed-city map, lively layered 2D, Cloud City first with five floating-island houses, a cat in a tiny airship travelling automatically after tapping a house, mixed animal customers, English narration alongside text/replay, three to five questions using each house’s activity, gentle hints/retry without lives, fixed sequential route, envelope popup/hearts on delivery, fresh practice preserving delivered status. After every completed house, the courier travels onward with animation. Every house must be an individual asset; each house’s animal customer must be an individual animated asset. Timing relative to the popup or Continue is unspecified. This note is a design requirement, not implementation authorization.
+COD is now a playable Unity Editor prototype, not planning-only. Current scope: Class 1 English, Cloud City, five houses and three questions per house. Classes 1–5 remain the longer-term goal. Fixed-route airship travel, hints/retry, delivery celebrations, replay safeguards and local progress are implemented.
 
-Accepted activities: Number Line, Missing Number, Count Birds/Flying Math, Shape Match, Picture–Word Match and Add/Subtract. Birds enter then settle and remain visible/countable. Combining Number Line and Missing Number into one house, exact route order, the kitten/rabbit/squirrel/hedgehog/owl/bear cast and exactly three questions are proposals.
+The authored Unity scene is `Assets/COD/Editable/Authoring/CODEditableGame.unity`: twelve persistent screen prefabs plus Shell, with typed presenter bindings rather than runtime layout reconstruction. Stop Play to save designer edits. Keep the legacy scene as rollback; never regenerate over the Authoring directory.
+
+## Latest local work and evidence
+
+Pip has six transparent Greeting frames at 6 fps. Owner Home/Map/Greeting layouts are preserved. Full-city and focused checks completed on 27 October at about 22:04 UTC. A preflight on 28 October at 05:15 UTC confirmed all 18 product files still matched that validated copy by SHA; it did not rerun the tests. Validation passed 111 infrastructure checks and a full-city Editor flow with eleven captures, exit 0, empty errors and a clean source guard. Animation checks covered six-frame advance, reduced-motion stillness, hidden-screen stop and replay reset; other recipients did not receive Pip’s six-frame loop.
+
+Private game repository: `SheesshhOfficial/Vopa.LearningGarden`, branch `cod/visual-preview`, last confirmed pushed baseline `1400f1f` (27 October). Latest Pip/layout changes are LOCAL AND UNCOMMITTED. The validation copy being clean does not mean those local changes were pushed. This public repository contains workspace documentation, not the private game source.
+
+## Remaining work
+
+379 narration clips are prepared but not integrated or audibly quality-checked. Repeated cottage art and a bear placeholder remain. Editor results do not certify real touch/device behavior, Windows/Android release builds, accessibility or classroom suitability. Client demo prepared; outcome unconfirmed.
+
+PC execution uses GPT-6 Luna with low reasoning for minimal pinned jobs/report files; parent planning/code review remains separate. The general `run.bat` background utility is paused, not deployed: Python access denied; dependencies approved but none installed.
 
 ## Workspace
 
-[Overview](../../workspace/vopa-learning-game/overview.html), [Game Design](../../workspace/vopa-learning-game/game-plan.html), [Concept Gallery](../../workspace/vopa-learning-game/concepts.html), [Animation & Assets](../../workspace/vopa-learning-game/animation-assets.html), [Uploaded Asset Review](../../workspace/vopa-learning-game/uploaded-assets.html), [Status & Decisions](../../workspace/vopa-learning-game/taskboard.html), [Original References](../../workspace/vopa-learning-game/references.html), [Ideas History](../../workspace/vopa-learning-game/ideas-history.html), [Earlier Prototype](../../workspace/vopa-learning-game/runbook.html).
+[Brief overview](../../workspace/vopa-learning-game/overview.html) · [Game & Architecture](../../workspace/vopa-learning-game/game-plan.html) · [Edit & Run Guide](../../workspace/vopa-learning-game/implementation.html) · [Art & Animation](../../workspace/vopa-learning-game/animation-assets.html) · [Status & Evidence](../../workspace/vopa-learning-game/taskboard.html)
 
-Twelve generated concept images are available. Home/settings concepts and separate animation-art generation stopped at the generation usage limit and remain unproduced. Concepts are not production sprites, rig parts, animation frames, gameplay screenshots or proof of working UI. Future text/buttons must be runtime UI. Rigs, loops, CCD implementation and native/device tests are NOT RUN / not created.
+[Historical concepts](../../workspace/vopa-learning-game/concepts.html) · [Original draft reviews](../../workspace/vopa-learning-game/uploaded-assets.html) · [Original references](../../workspace/vopa-learning-game/references.html) · [Ideas history](../../workspace/vopa-learning-game/ideas-history.html) · [Earlier prototype](../../workspace/vopa-learning-game/runbook.html)
 
 ## Preservation
 
-The original seven Tarang/VOPA screenshots remain byte-for-byte unchanged. Previous brainstorming and LearningGarden exploratory prototype remain historical. No SnipersAim, ECC or application-code changes.
-
-## Uploaded asset drafts
-
-Ten user-supplied PNG originals are retained unchanged in `workspace/vopa-learning-game/assets/uploaded-drafts/`, separately from the twelve concepts and seven references. The Uploaded Asset Review tab records per-file visual findings, dimensions, alpha results, original-byte checksums and next steps. Static sheets are not animation-ready merely because they show multiple poses; a background may legitimately be opaque. No image editing, segmentation, rigging or game implementation is included.
+All twelve concept images, ten uploaded draft originals, seven reference screenshots and gallery data are unchanged. Historical reviews still apply to their exact originals, not later production derivatives. This update adds no media, raw logs, private usernames or game-source files and does not change other projects or ECC.
