@@ -22,7 +22,7 @@
     {
       "id": "vopa-learning-game",
       "title": "NIPUN Tarang",
-      "description": "Reference WebGL built at 29.49 MB; 40/40 EditMode checks passed. Browser play QA and reference Android APK pending; baseline APK kept distinct. Daily limit off.",
+      "description": "Reference Android APK built (55.27 MB), integrity/alignment/signature checks passed; source checkpoint pushed. Browser/device gameplay QA pending; WebGL 29.49 MB.",
       "type": "group",
       "category": "project",
       "created": "2026-10-25",

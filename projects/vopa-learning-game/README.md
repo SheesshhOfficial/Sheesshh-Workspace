@@ -1,5 +1,20 @@
 # NIPUN Tarang
 
+## Reference Android checkpoint · 30 October 2026, 20:02 UTC
+
+**Reference Android APK built; package checks passed, gameplay QA still pending.** Reviewed 50-path scene/prefab/art checkpoint `98c2489837c9d3712ff86f9d5aa9bdd1ac33cd6d` is now pushed to `nipun/development` in the private game repository and remote-verified.
+
+- **55,274,002 bytes (55.27 MB)**; Unity succeeded with **zero errors, 975 warnings**. ZIP integrity, zipalign and signature checks passed.
+- ARM64, debug-signed, `com.vopa.nipuntarang.preview`, minimum SDK 26 / target SDK 36.
+- SHA-256: `E37AF087591014302E065EDFA87428F8F71266195F16D5CC439C203F3E28AFE8`.
+- Compared with the earlier 50,406,676-byte baseline APK: **+4,867,326 bytes (+9.66%)**. This new APK is the reference build; the earlier one remains baseline evidence.
+- WebGL remains **29,493,316 bytes**. No phone installation, gameplay acceptance or browser play QA has been completed. Browser-QA preflight is ongoing.
+- No COD runtime asset sources appeared in the build evidence. Detailed compressed categories are in [Delivery & Acceptance](../../workspace/vopa-learning-game/nipun-delivery.html); shared code/assets still prevent reliable exact per-game or 48-game size forecasts.
+
+Next: complete browser preflight and actual browser interaction, narration and reference review, followed by device installation/gameplay checks. Build/package validation is not playable-game acceptance. Preserve manual FortMap/layout edits and Game 1-specific requirements. This documentation-only update publishes no private artwork, game files or raw logs.
+
+Earlier checkpoints below remain preserved history; this update supersedes their “not pushed” and “reference APK not built” statements.
+
 ## Reference build checkpoint · 30 October 2026, 08:44 UTC
 
 **Reference WebGL built; browser play QA has not run.** Source checkpoint `5c4fe12b11374035a1d491ee8fb40013388d2d54` includes the eight-symbol renderer repair. Clean import: zero errors. EditMode: **40/40 passed, zero failed, zero skipped**. This does not establish playable or visually accepted gameplay.
