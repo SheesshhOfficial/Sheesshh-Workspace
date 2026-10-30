@@ -22,7 +22,7 @@
     {
       "id": "vopa-learning-game",
       "title": "NIPUN Tarang",
-      "description": "Reference Android APK built (55.27 MB), integrity/alignment/signature checks passed; source checkpoint pushed. Browser/device gameplay QA pending; WebGL 29.49 MB.",
+      "description": "Reference APK built and checked; basic MathFly browser navigation, answers, lose/retry and resume observed. Stage rewards/unlock, persistence and phone QA remain open.",
       "type": "group",
       "category": "project",
       "created": "2026-10-25",

@@ -1,5 +1,17 @@
 # NIPUN Tarang
 
+## Basic browser QA · 30 October 2026, 20:31 UTC
+
+**Basic MathFly browser flows observed; full gameplay acceptance remains open.** A fresh isolated local origin served the page and four build assets with HTTP 200. The owned server was stopped afterward and its port verified free.
+
+- Observed Home → Explore → Torna → MathFly → Stage 1 instructions → gameplay with four answer buttons.
+- Correct answer: 1/3, then a new question without repeating instructions. Wrong answer: red feedback, three hearts to two, then a new question. Exhausted lives reached the lose screen.
+- Retry: three lives, 0/3 and instructions. Home Play resumed incomplete Stage 1.
+- **Not verified:** completed-stage stars/rewards, next-stage unlock, completed-progress persistence after reload, all stages, shorter portrait layouts, console diagnostics or Android phone gameplay. No pixel-perfect-reference claim.
+- Ten-second timing/tool delays limited checks. A separate apparent three-to-one-heart change is inconclusive (two timeouts may have elapsed), not a confirmed bug. Targeted code review found no double-decrement path; an isolated runtime check is still needed.
+
+The verified APK was copied for the owner's phone testing; device results remain pending. Earlier “browser QA not run” statements are historical and superseded only for these listed basic flows.
+
 ## Reference Android checkpoint · 30 October 2026, 20:02 UTC
 
 **Reference Android APK built; package checks passed, gameplay QA still pending.** Reviewed 50-path scene/prefab/art checkpoint `98c2489837c9d3712ff86f9d5aa9bdd1ac33cd6d` is now pushed to `nipun/development` in the private game repository and remote-verified.
