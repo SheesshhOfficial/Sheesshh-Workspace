@@ -1,5 +1,22 @@
 # NIPUN Tarang
 
+## Current status · 30 October 2026 UTC
+
+The reference-faithful remake is **in progress, not yet visually verified**. The Android baseline builds; that is not installation, device QA, or full gameplay acceptance.
+
+- Match the supplied day/night gameplay references: four colored bottom answer buttons in a 2 × 2 arrangement, the client purple bird, and a pillar gap on the right. Game 1 Home uses the client Home UI atlas; stage selection uses castle-style nodes for four stages. Keep art Game 1-specific and preserve the owner's FortMap layout/prefab edits.
+- Daily 40-minute limit is **OFF**. Ten-second question timing, three lives, three cumulative correct answers per stage and four stages remain unchanged.
+- Local native checkpoint `78ea0fa5f34a959bca1ea85419930ac37ce17959`: import and 29 EditMode tests passed; visibility repair covers 11 active preview-page assets with Home-only root activation. Three earlier PlayMode tests timed out; Editor rules tests are not full UI QA.
+- Removed 234 COD files from the active local project with an external archive retained; the old Resources pack was a bloat source. No COD sources appeared in the APK BuildReport. Public historical workspace pages/media remain unchanged.
+- Android baseline: ARM64 IL2CPP, debug-signed, `com.vopa.nipuntarang.preview`, minimum SDK 26 / target 36, **50,406,676 bytes**. CRC passed for 599 entries; apksigner v2 passed. Build had zero errors and 975 warnings, mainly shaders. Not installed or device-tested.
+- Older web build: 49,872,128 bytes; it does not validate the latest reference remake. APK size breakdown and its limitations are in [Delivery & Acceptance](../../workspace/vopa-learning-game/nipun-delivery.html).
+- The native checkpoint has not yet been pushed to the game repository; the original remains at `448eba8` with owner prefab edits. This update publishes documentation only, not private game source or client assets.
+- Six forts × eight games is a **future 48-game plan**, not delivered content. Shared assets prevent a reliable exact per-game/48-game size projection. API/on-demand asset delivery is planned, not implemented.
+
+Next: finish the reference-faithful iteration, compare actual Unity renders against the references, then validate navigation, answers/timeout, instructions, retry/rewards and a new build. Preserve all manual layout changes. The older plan below is retained as history; this current status supersedes conflicting statements.
+
+## Historical brief · 28 October 2026
+
 Updated 28 October 2026. This is the active replacement direction for the existing VOPA learning-game workspace card. COD pages and media are preserved as historical records, not deleted or silently repurposed.
 
 ## Brief status

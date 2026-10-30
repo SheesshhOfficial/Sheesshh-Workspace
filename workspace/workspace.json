@@ -22,11 +22,11 @@
     {
       "id": "vopa-learning-game",
       "title": "NIPUN Tarang",
-      "description": "Fort-themed Unity/WebGL learning demo: MathFly and NumberLineJump plan, editable screens, narration, stage progression and daily-limit acceptance criteria.",
+      "description": "Reference-faithful Game 1 iteration in progress; Android baseline built, cleanup and Editor checks recorded, visual/device QA pending. Daily limit off.",
       "type": "group",
       "category": "project",
       "created": "2026-10-25",
-      "updated": "2026-10-28",
+      "updated": "2026-10-30",
       "folder": "vopa-learning-game",
       "steps": [
         {
@@ -42,15 +42,15 @@
           "path": "nipun-delivery.html"
         },
         {
-          "name": "COD \u00b7 Overview (historical)",
+          "name": "COD · Overview (historical)",
           "path": "overview.html"
         },
         {
-          "name": "COD \u00b7 Architecture (historical)",
+          "name": "COD · Architecture (historical)",
           "path": "game-plan.html"
         },
         {
-          "name": "COD \u00b7 Editing Guide (historical)",
+          "name": "COD · Editing Guide (historical)",
           "path": "implementation.html"
         },
         {
@@ -58,7 +58,7 @@
           "path": "concepts.html"
         },
         {
-          "name": "COD \u00b7 Art (historical)",
+          "name": "COD · Art (historical)",
           "path": "animation-assets.html"
         },
         {
@@ -66,7 +66,7 @@
           "path": "uploaded-assets.html"
         },
         {
-          "name": "COD \u00b7 Evidence (historical)",
+          "name": "COD · Evidence (historical)",
           "path": "taskboard.html"
         },
         {
@@ -216,39 +216,39 @@
       "folder": "2026-09-15_arachne-character",
       "steps": [
         {
-          "name": "Version 1 \u00b7 Creature concepts",
+          "name": "Version 1 · Creature concepts",
           "path": "report.html"
         },
         {
-          "name": "Version 2 \u00b7 A stronger premise",
+          "name": "Version 2 · A stronger premise",
           "path": "report_v2.html"
         },
         {
-          "name": "Version 3 \u00b7 Four directions",
+          "name": "Version 3 · Four directions",
           "path": "report_v3.html"
         },
         {
-          "name": "Version 4 \u00b7 Targeted refinement",
+          "name": "Version 4 · Targeted refinement",
           "path": "report_v4.html"
         },
         {
-          "name": "Version 5 \u00b7 Arachne exploration",
+          "name": "Version 5 · Arachne exploration",
           "path": "report_v5.html"
         },
         {
-          "name": "Version 6 \u00b7 Style refinement",
+          "name": "Version 6 · Style refinement",
           "path": "report_v6.html"
         },
         {
-          "name": "Version 7 \u00b7 The mixed direction",
+          "name": "Version 7 · The mixed direction",
           "path": "report_v7.html"
         },
         {
-          "name": "Version 8 \u00b7 A coherent queen",
+          "name": "Version 8 · A coherent queen",
           "path": "report_v8.html"
         },
         {
-          "name": "Version 9 \u00b7 Palette studies",
+          "name": "Version 9 · Palette studies",
           "path": "report_v9.html"
         },
         {
