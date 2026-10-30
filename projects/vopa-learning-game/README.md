@@ -1,6 +1,19 @@
 # NIPUN Tarang
 
-## Current status · 30 October 2026 UTC
+## Reference build checkpoint · 30 October 2026, 08:44 UTC
+
+**Reference WebGL built; browser play QA has not run.** Source checkpoint `5c4fe12b11374035a1d491ee8fb40013388d2d54` includes the eight-symbol renderer repair. Clean import: zero errors. EditMode: **40/40 passed, zero failed, zero skipped**. This does not establish playable or visually accepted gameplay.
+
+- Reference WebGL: **29,493,316 bytes (29.49 MB)** versus the earlier 49,872,128 bytes—approximately **41% smaller**.
+- Generated independently editable Game 1 Home, Stage and MathFly reference prefabs. All **31 existing prefab hashes and the original Pages scene remained unchanged**. Eight day/night assets moved with GUIDs preserved.
+- Browser play QA **not run**, blocked by local-server launch restrictions.
+- New reference Android APK **not built yet**: generated assets need a reviewed source checkpoint and build-mutated URP settings recovery first. The **50,406,676-byte APK is still the earlier baseline**, not this reference build.
+- Next: review/checkpoint generated source and assets, recover build-mutated settings, build the reference APK, and verify real browser/device interaction, narration and reference matching.
+- Daily limit remains OFF; ten-second questions, three lives, three cumulative correct answers per stage and four stages remain unchanged. Preserve supplied-reference composition, Game 1-specific art and the owner's FortMap edits.
+
+This documentation-only update publishes no private game source, client artwork, screenshots or raw logs. The earlier checkpoints below are preserved as history; this update supersedes their older test/build and source-status statements.
+
+## Earlier status · 30 October 2026 UTC
 
 The reference-faithful remake is **in progress, not yet visually verified**. The Android baseline builds; that is not installation, device QA, or full gameplay acceptance.
 
