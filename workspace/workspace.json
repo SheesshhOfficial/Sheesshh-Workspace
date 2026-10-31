@@ -22,64 +22,28 @@
     {
       "id": "vopa-learning-game",
       "title": "NIPUN Tarang",
-      "description": "Reference APK built and checked; basic MathFly browser navigation, answers, lose/retry and resume observed. Stage rewards/unlock, persistence and phone QA remain open.",
+      "description": "Full editable UI polish and runner cleanup in progress. Latest background checkpoint passed 29 Editor tests; live visual acceptance and a fresh APK remain pending.",
       "type": "group",
       "category": "project",
       "created": "2026-10-25",
-      "updated": "2026-10-30",
+      "updated": "2026-10-31",
       "folder": "vopa-learning-game",
       "steps": [
         {
-          "name": "NIPUN Overview",
+          "name": "Overview",
           "path": "nipun-overview.html"
         },
         {
-          "name": "NIPUN Game Plan",
+          "name": "Game & UI Plan",
           "path": "nipun-design.html"
         },
         {
-          "name": "Delivery & Acceptance",
+          "name": "Delivery & Checks",
           "path": "nipun-delivery.html"
         },
         {
-          "name": "COD · Overview (historical)",
-          "path": "overview.html"
-        },
-        {
-          "name": "COD · Architecture (historical)",
-          "path": "game-plan.html"
-        },
-        {
-          "name": "COD · Editing Guide (historical)",
-          "path": "implementation.html"
-        },
-        {
-          "name": "Historical Concepts",
-          "path": "concepts.html"
-        },
-        {
-          "name": "COD · Art (historical)",
-          "path": "animation-assets.html"
-        },
-        {
-          "name": "Original Draft Review",
-          "path": "uploaded-assets.html"
-        },
-        {
-          "name": "COD · Evidence (historical)",
-          "path": "taskboard.html"
-        },
-        {
-          "name": "Original References",
+          "name": "Tarang References",
           "path": "references.html"
-        },
-        {
-          "name": "Ideas History",
-          "path": "ideas-history.html"
-        },
-        {
-          "name": "Earlier Prototype",
-          "path": "runbook.html"
         }
       ],
       "status": "active",

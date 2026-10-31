@@ -1,7 +1,7 @@
 {
-  "source": "User-supplied Tarang / VOPA screenshots, supplied 25 October 2026 UTC",
+  "source": "User-supplied Tarang / VOPA screenshots, supplied 25 October 2026 UTC; retained as NIPUN Tarang visual references.",
   "rights": "Reference-only. Ownership, creator and reuse license not established; not production game assets or endorsement.",
-  "preservation": "Original bytes preserved. Original attachment order retained, including side menu before gameplay.",
+  "preservation": "Original image bytes and attachment order retained. Reference observations are not runtime verification.",
   "images": [
     {
       "number": 1,
@@ -9,10 +9,9 @@
       "original_filename": "1000154321.png",
       "title": "World journey map",
       "role": "Journey / navigation",
-      "visible": "A tall illustrated landscape connects labelled forts with a dotted route. Torna is colourful and highlighted; Rajgad, Sinhagad, Pratapgad and Panhala are grey. Shivneri and Raigad have visible \u201cIllustration unavailable\u201d panels. Rivers, mountains, trees and clouds frame the route.",
+      "visible": "A tall illustrated landscape connects labelled forts with a dotted route. Torna is colourful and highlighted; Rajgad, Sinhagad, Pratapgad and Panhala are grey. Shivneri and Raigad have visible “Illustration unavailable” panels. Rivers, mountains, trees and clouds frame the route.",
       "style": "Green land, blue water, warm wooden signs and stone structures create a storybook exploration mood. A large arrow focuses attention on the active location; colour contrast separates it from the rest. The route supplies visual continuity down a long portrait screen.",
-      "proposed_adaptation": "Borrow the idea of a small, readable journey with one obvious next destination. A garden version could use an orchard, shape meadow and memory grove; a fort version would need newly authored art. Keep a list alternative so a child does not have to understand the map to start.",
-      "cautions": "The grey treatment suggests unavailable destinations, but the exact unlock rules are unknown. Missing-illustration cards are defects to avoid, not target artwork. The screenshot does not establish map animation, scrolling behaviour or learning outcomes.",
+      "cautions": "A still reference does not establish runtime behavior, audio, unlocking rules or accessibility. Use current NIPUN requirements for implementation; retain original image provenance and do not treat reference screenshots as production sprites.",
       "width": 922,
       "height": 2048,
       "sha256": "5f9ed3582ea6f31e9a00d26ae008864a2d46af4c7110df1cfdea28cedd77d59f"
@@ -25,8 +24,7 @@
       "role": "Activity selection",
       "visible": "A winding path climbs an illustrated fort. Four lower activity tiles are labelled Number Line Jump, Shabda Builder, Word Shooter and Flying Math, each carrying a New badge. Four higher tiles show locks and Mystery Mission. Back, podium and map icons sit near the top.",
       "style": "Large square illustrations sit on circular plinths with purple nameplates. The path supplies depth and connects otherwise separate mini-games. The fort title crowns the composition while the lower-left arrow marks a likely starting point.",
-      "proposed_adaptation": "Use one themed hub for distinct activities, with a clear image, readable name and one-tap entry. Show only activities actually implemented for the chosen concept. If future content is teased, clearly mark it as planned rather than presenting a broken playable button.",
-      "cautions": "Only the labels and screen arrangement are observed. The screenshot cannot establish how those other games play, whether badges expire, how locks open or what the podium icon actually does. Do not copy Tarang game art, title graphics or code.",
+      "cautions": "A still reference does not establish runtime behavior, audio, unlocking rules or accessibility. Use current NIPUN requirements for implementation; retain original image provenance and do not treat reference screenshots as production sprites.",
       "width": 922,
       "height": 2048,
       "sha256": "d020c2587b748dc3e17bee0b569c46d1e58386c0c3d0a69e4513f1939631b2c7"
@@ -39,8 +37,7 @@
       "role": "Visual identity / first impression",
       "visible": "The Marathi title is mounted on a leafy wooden sign. An orange cat waves from behind a fence, with floating numbered circles around it. A prominent wooden Play button sits below; back and information icons remain secondary.",
       "style": "Bright sky, layered green foliage, a friendly oversized mascot, thick outlines and warm wood create a playful focal hierarchy: title, character, then action. The title is rendered as artwork rather than ordinary paragraph text.",
-      "proposed_adaptation": "Create an original mascot and title treatment for our own game. Keep a single large Play action, with help available but less prominent. Reserve enough space for reviewed Marathi or Hindi text rather than shrinking translated labels.",
-      "cautions": "This is reference art, not a usable sprite pack. Recreate the design principles using original assets, not traced branding or the same cat. A still image is not proof of animation, working navigation or accessible text.",
+      "cautions": "A still reference does not establish runtime behavior, audio, unlocking rules or accessibility. Use current NIPUN requirements for implementation; retain original image provenance and do not treat reference screenshots as production sprites.",
       "width": 922,
       "height": 2048,
       "sha256": "56645b763db6f33877f5192b4588d2f9ef6c3aeff54bb3e4fc7b69a417c87b07"
@@ -51,10 +48,9 @@
       "original_filename": "1000154324.png",
       "title": "Stage-selection wall",
       "role": "Progression / state clarity",
-      "visible": "Inside a stone arch, Stage 1 has a colourful torch-and-laurel badge. Stages 2\u20134 use dark silhouettes with white locks, connected by a dotted zigzag route. A back button and gear icon are visible.",
+      "visible": "Inside a stone arch, Stage 1 has a colourful torch-and-laurel badge. Stages 2–4 use dark silhouettes with white locks, connected by a dotted zigzag route. A back button and gear icon are visible.",
       "style": "The consistent badge silhouette contrasts a detailed active stage with simplified future stages. Stone blocks support the fort theme, while generous vertical spacing reduces accidental selection.",
-      "proposed_adaptation": "A later progression screen could use three short stages per skill, with completed/current/next states and replay. Start with one verified activity before building a large locked map. Use icons and text as well as colour for state.",
-      "cautions": "The unlock conditions, number of questions per stage and persistence are not visible. Do not turn the starter\u2019s completed-visit counters into a claim of mastery. Decide whether locking helps the intended learners before implementing it.",
+      "cautions": "A still reference does not establish runtime behavior, audio, unlocking rules or accessibility. Use current NIPUN requirements for implementation; retain original image provenance and do not treat reference screenshots as production sprites.",
       "width": 922,
       "height": 2048,
       "sha256": "b3c0ef4dd81203e1e797ea3eb52cff0dd8016be66c023ac4e0173e455ac7febb"
@@ -67,8 +63,7 @@
       "role": "Onboarding / feedback",
       "visible": "A Marathi how-to heading introduces four numbered cream panels. The panels illustrate hearing/reading a question, selecting a number, receiving correct feedback and trying again after a mistake. Speaker icons, a cat mascot, connecting arrows and a bottom Play action are visible.",
       "style": "The blurred garden keeps attention on foreground instruction cards. Each numbered step combines a short instruction with a concrete UI example. Contrasting badges and arrows establish reading order.",
-      "proposed_adaptation": "Provide a short interactive practice round before independent play: hear/read the prompt, try a choice, see helpful feedback, then continue. Keep instructions replayable. Use real interface examples and text equivalents for any spoken guidance.",
-      "cautions": "Speaker icons indicate intended audio controls, not verified playback, language quality or accessibility. The pictured meter is part of an example; its runtime rules are unknown. The earlier prototype has feedback sounds but no narration yet.",
+      "cautions": "A still reference does not establish runtime behavior, audio, unlocking rules or accessibility. Use current NIPUN requirements for implementation; retain original image provenance and do not treat reference screenshots as production sprites.",
       "width": 922,
       "height": 2048,
       "sha256": "5117cc21ead41e62f1099afd36502a89b9a13b382394b1e756f4e03a471a865c"
@@ -80,9 +75,8 @@
       "title": "Side menu and account navigation",
       "role": "Settings / secondary navigation",
       "visible": "A cream drawer covers most of the screen. Its brown header shows an S badge, the display name Sheesshh and Level 1, with a close button. Three large rows are labelled My Profile, Leaderboard and Settings. The underlying scene is dimmed.",
-      "style": "Large stacked rows, left icons, right chevrons and a clear close action create a conventional secondary-navigation surface. Brown outlines, cream fills and gold accents maintain the game\u2019s visual language.",
-      "proposed_adaptation": "Borrow the simple drawer pattern only for necessary controls: sound, help, language when implemented, and a grown-up area. Preserve the current activity when closing it. Keep a clear exit/back path and large touch targets.",
-      "cautions": "The displayed profile belongs to the supplied reference, not a feature specification. Profiles, child accounts, cloud sync and leaderboards are not in the earlier prototype and are not approved additions. Do not treat a visible level as proof of a ranking system or copy the user\u2019s profile into new functionality.",
+      "style": "Large stacked rows, left icons, right chevrons and a clear close action create a conventional secondary-navigation surface. Brown outlines, cream fills and gold accents maintain the game’s visual language.",
+      "cautions": "A still reference does not establish runtime behavior, audio, unlocking rules or accessibility. Use current NIPUN requirements for implementation; retain original image provenance and do not treat reference screenshots as production sprites.",
       "width": 922,
       "height": 2048,
       "sha256": "20fa36d9cc3cf4278b60232e27c783b99ef6398fbe2afd2e8eaad91480c4d8ad"
@@ -95,8 +89,7 @@
       "role": "Learning interaction / number order",
       "visible": "The Marathi prompt asks which number comes after 4. A fence number line shows 2, 3, 4, a question mark, 6, 7 and 8; the offered choices are 4, 5 and 6. A cat appears behind the fence. The top strip contains stage-like dots and three hearts; a speaker button sits beside the question.",
       "style": "A single question is separated from the answer tray. The fence grounds abstract numbers in a tangible sequence; the missing position is visually emphasized. Large purple answer circles contrast with warm wood and the green garden.",
-      "proposed_adaptation": "Consider a new Number Path activity if number-order practice fits the selected concept: identify a missing or next number, choose among three distinct answers, animate an original mascot toward the correct spot and give a useful hint after mistakes. Show the number relationship, not just a right/wrong badge.",
-      "cautions": "This Number Path game is proposed, not present in the three-game starter. Hearts are visible but their penalty/recovery rules are unverified; avoid punitive lives in the initial learning prototype. The green battery-shaped 38:xx indicator\u2019s meaning is unknown. Phone status, browser controls and gesture bar are not game UI.",
+      "cautions": "A still reference does not establish runtime behavior, audio, unlocking rules or accessibility. Use current NIPUN requirements for implementation; retain original image provenance and do not treat reference screenshots as production sprites.",
       "width": 922,
       "height": 2048,
       "sha256": "00c7271e7798c420b0a9b5322f61658137c37c78ddb06014de6f272cee72df3d"
